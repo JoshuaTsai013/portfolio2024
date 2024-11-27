@@ -1,93 +1,93 @@
 .parallax_layer {
-    height: 100%;
-    position: absolute;
-    background-repeat: no-repeat;
-    width: 100%;
+  height: 100%;
+  position: absolute;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.background {
+  background-image: url(../../assets/images/bg.png);
+  background-size: cover;
+  background-position: center;
+  @apply parallax_layer;
+}
+
+.backgroundUp {
+  background-image: url(../../assets/images/backgroundUp.png);
+  background-size: cover;
+  background-position: center;
+  @apply parallax_layer;
+}
+
+.backgroundDown {
+  background-image: url(../../assets/images/backgroundDown.png);
+  background-size: cover;
+  background-position: center;
+  @apply parallax_layer;
+}
+
+.grid {
+  background-image: url(../../assets/images/gridLine.png);
+  background-size: cover;
+  background-position: center;
+  /* animation: grid 1s ease-in-out; */
+  
+}
+
+.star {
+  background-image: url(../../assets/images/star.png);
+  background-size: 100%;
+  background-position: top;
+  /* animation: float 10s ease-in-out infinite; */
+  @apply parallax_layer;
+}
+
+.sun {
+  background-image: url(../../assets/images/sunSize.png);
+  background-size: 20%;
+  background-position: center;
+  /* animation: sun 2s ease-out; */
+   @apply parallax_layer;
+}
+@keyframes grid {
+  0% {
+    transform: translateY(5px) scaleY(0.8);
   }
   
-  .background {
-    background-image: url(../../assets/images/bg.png);
-    background-size: cover;
-    background-position: center;
-    @apply parallax_layer;
+  100% {
+    transform: translateY(0) scaleY(1);
   }
   
-  .backgroundUp {
-    background-image: url(../../assets/images/backgroundUp.png);
-    background-size: cover;
-    background-position: center;
-    @apply parallax_layer;
-  }
   
-  .backgroundDown {
-    background-image: url(../../assets/images/backgroundDown.png);
-    background-size: cover;
-    background-position: center;
-    @apply parallax_layer;
-  }
-  
-  .grid {
-    background-image: url(../../assets/images/gridLine.png);
-    background-size: cover;
-    background-position: center;
-    animation: grid 1s ease-in-out;
-    @apply parallax_layer;
-  }
-  
-  .star {
-    background-image: url(../../assets/images/star.png);
-    background-size: 100%;
-    background-position: top;
-    /* animation: float 10s ease-in-out infinite; */
-    @apply parallax_layer;
-  }
-  
-  .sun {
-    background-image: url(../../assets/images/sun.png);
-    background-size: 100%;
-    background-position: center;
-    animation: sun 2s ease-out;
-     @apply parallax_layer;
-  }
-  @keyframes grid {
-    0% {
-      transform: translateY(5px) scaleY(0.5);
-    }
-    
-    100% {
-      transform: translateY(0) scaleY(1);
-    }
-    
-    
-  }
-  @keyframes float {
-    0% {
-      transform: translateY(0);
-    }
-  
-    50% {
-      transform: translateY(-20px);
-    }
-  
-    100% {
-      transform: translateY(0);
-    }
+}
+@keyframes float {
+  0% {
+    transform: translateY(0);
   }
 
-  @keyframes sun {
-    0% {
-      transform: translateY(-400px);
-    }
-  
-    100% {
-      transform: translateY(0);
-    }
+  50% {
+    transform: translateY(-20px);
   }
-  
-  /*視差滾動手機*/
-  @media (max-width:376px) {
-    .parallax_layer {
-      background-size: 150% auto;
-      height: 667px;
-    }
+
+  100% {
+    transform: translateY(0);
   }
+}
+
+@keyframes sun {
+  0% {
+    transform: translateY(-400px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/*視差滾動手機*/
+@media (max-width:376px) {
+  .parallax_layer {
+    background-size: 150% auto;
+    height: 667px;
+  }
+}
