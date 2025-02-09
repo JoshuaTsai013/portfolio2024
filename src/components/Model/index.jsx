@@ -1,7 +1,7 @@
 import { motion, useScroll, useSpring, useTransform, MotionValue } from "motion/react"
 function Model() {
     return (
-        <div className="h-screen place-items-center" >
+        <div style={{ height: "1800px" }} className="place-items-center bg-zinc-700  p-40" >
             <h1>Model Page</h1>
             <h2>Model</h2>
             <p>
