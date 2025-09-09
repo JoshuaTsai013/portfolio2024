@@ -8,7 +8,10 @@ const SmoothScroll = ({ children, setScrollY }) => {
         const locomotiveScroll = new LocomotiveScroll({
             el: scrollRef.current,
             smooth: true,
-
+            multiplier: 1.2,
+            class: "is-reveal",
+            lerp: 0.05,
+            // Other options...
         });
 
         locomotiveScroll.on("scroll", (obj) => {
