@@ -1,0 +1,62 @@
+/* @font-face {
+    font-family: '123';
+    src: local("123"),
+      url('/fonts/1.OTF') format("woff");
+  } */
+
+.navlink {
+    /* display: flex;  Removed as flex is handled by Tailwind parent */
+    /* flex-grow: 1; */
+    /* justify-content: end; */
+    /* padding-right: 30px; */
+    /* text-align: left; */
+    font-weight: 800;
+    font-size: 17px;
+    font-family: "123", sans-serif;
+    /* Added fallback */
+    letter-spacing: 0.3rem;
+    opacity: 1;
+    position: relative;
+    /* For the pseudo-element */
+}
+
+
+.navlink::before {
+    content: '';
+    /* Essential for pseudo-elements */
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    /* Adjusted position */
+    width: 100%;
+    height: 1px;
+    background: white;
+    transform: scaleX(0);
+    /* Corrected from scale(0) to scaleX(0) for left-to-right expansion */
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.navlink:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.navbarCustom {
+    /* position: fixed; Handled by Tailwind */
+    /* top: 0; */
+    /* right: 0%; */
+    /* z-index: 999; */
+    /* width: 100%; */
+    /* height: 80px; */
+    color: rgb(255, 255, 255);
+    /* background-color: none; */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+    /* Added subtle gradient for visibility */
+}
+
+@media (max-width: 768px) {
+    .navlink {
+        white-space: nowrap;
+    }
+}
