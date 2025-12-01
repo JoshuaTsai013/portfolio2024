@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import styles from './Headerstyle.module.css';
 
-function Header() {
+function Header({ isVisible = true }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -52,7 +52,12 @@ function Header() {
   ];
 
   return (
-    <header className={`${styles.navbarCustom} fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center`}>
+    <motion.header
+      className={`${styles.navbarCustom} fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center`}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       {/* Logo or Brand Name could go here */}
       <div className="text-white font-bold text-xl z-50">
         {/* Placeholder for Logo if needed, or just keep empty for now as per original */}
@@ -124,7 +129,7 @@ function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }
 

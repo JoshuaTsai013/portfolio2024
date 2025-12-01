@@ -1,16 +1,19 @@
+import { useState, useEffect } from 'react';
+import OpeningVideo from '../../components/OpeningVideo';
 import Parallex from "../../components/Parallax";
 import Model from "../../components/Model";
+import ProjectShowcase from "../../components/ProjectShowcase";
+import Footer from "../../components/Footer";
 
-function HomePage({ scrollY }) {
+function HomePage({ scrollY, isVisible }) {
   return (
     <section>
+      <OpeningVideo />
       <Parallex scrollY={scrollY} />
-      <Model scrollY={scrollY} />
-      <div className="h-80 place-content-center">
-        <h1 className="place-self-center text-3xl font-bold underline">
-          Hello world!
-        </h1>
-      </div>
+      {/* <Parallex/> */}
+      {/* <Model scrollY={scrollY} /> */}
+      <ProjectShowcase />
+      <Footer />
     </section>
   );
 }

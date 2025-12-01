@@ -1,0 +1,317 @@
+.loadingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* CRT Scanlines effect */
+.scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.3) 51%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  animation: scanlineMove 8s linear infinite;
+  opacity: 0.1;
+  z-index: 2;
+}
+
+@keyframes scanlineMove {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+/* Vignette effect */
+.vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+/* Retro glitch title */
+.title {
+  font-size: clamp(2rem, 8vw, 5rem);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  letter-spacing: 0.3rem;
+  color: #00ffff;
+  text-shadow: 
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 30px #ff00ff,
+    0 0 40px #ff00ff;
+  margin: 0;
+  animation: flicker 4s infinite;
+}
+
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff00ff;
+  clip: rect(24px, 9999px, 90px, 0);
+  animation: glitchAnim 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 #00ffff;
+  clip: rect(85px, 9999px, 140px, 0);
+  animation: glitchAnim 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitchAnim {
+  0% {
+    clip: rect(17px, 9999px, 94px, 0);
+  }
+  20% {
+    clip: rect(89px, 9999px, 36px, 0);
+  }
+  40% {
+    clip: rect(51px, 9999px, 75px, 0);
+  }
+  60% {
+    clip: rect(2px, 9999px, 90px, 0);
+  }
+  80% {
+    clip: rect(65px, 9999px, 23px, 0);
+  }
+  100% {
+    clip: rect(41px, 9999px, 82px, 0);
+  }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.8;
+  }
+}
+
+/* Sine wave container */
+.waveContainer {
+  width: min(600px, 90vw);
+  height: 120px;
+  position: relative;
+  filter: drop-shadow(0 0 10px #ff00ff);
+}
+
+.wave {
+  width: 100%;
+  height: 100%;
+}
+
+.waveLine {
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.wave1 {
+  stroke: #00ffff;
+  opacity: 0.8;
+  animation: waveAnimate1 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px #00ffff);
+}
+
+.wave2 {
+  stroke: #ff00ff;
+  opacity: 0.6;
+  animation: waveAnimate2 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px #ff00ff);
+}
+
+.wave3 {
+  stroke: #ffff00;
+  opacity: 0.4;
+  animation: waveAnimate3 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px #ffff00);
+}
+
+@keyframes waveAnimate1 {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.2);
+  }
+}
+
+@keyframes waveAnimate2 {
+  0%, 100% {
+    transform: scaleY(1) translateX(0);
+  }
+  50% {
+    transform: scaleY(1.3) translateX(-2%);
+  }
+}
+
+@keyframes waveAnimate3 {
+  0%, 100% {
+    transform: scaleY(1) translateX(0);
+  }
+  50% {
+    transform: scaleY(1.1) translateX(2%);
+  }
+}
+
+/* Progress bar */
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: min(400px, 80vw);
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0, 255, 255, 0.1);
+  border: 2px solid #00ffff;
+  box-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.5),
+    inset 0 0 10px rgba(0, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ffff, #ff00ff, #ffff00);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.8),
+    0 0 30px rgba(255, 0, 255, 0.6);
+  position: relative;
+}
+
+.progressFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progressText {
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00ffff;
+  text-shadow: 
+    0 0 10px #00ffff,
+    0 0 20px #00ffff;
+  letter-spacing: 0.2rem;
+}
+
+/* Loading text */
+.loadingText {
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  color: #00ff00;
+  text-shadow: 
+    0 0 5px #00ff00,
+    0 0 10px #00ff00;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.blinkingCursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content {
+    gap: 2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .waveContainer {
+    height: 80px;
+  }
+
+  .loadingText {
+    font-size: 0.9rem;
+    letter-spacing: 0.2rem;
+  }
+}
