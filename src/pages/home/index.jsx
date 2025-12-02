@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import OpeningVideo from '../../components/OpeningVideo';
 import Parallex from "../../components/Parallax";
-import Model from "../../components/Model";
+import ScrollModelViewer from "../../components/ScrollModelViewer";
 import ProjectShowcase from "../../components/ProjectShowcase";
 import Footer from "../../components/Footer";
 
@@ -10,6 +10,7 @@ function HomePage({ scrollY, isVisible }) {
     <section>
       <OpeningVideo />
       <Parallex scrollY={scrollY} />
+      <ScrollModelViewer scrollY={scrollY} />
       {/* <Parallex/> */}
       {/* <Model scrollY={scrollY} /> */}
       <ProjectShowcase />
