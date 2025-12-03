@@ -1,9 +1,20 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import styles from './project.module.css';
+import ProjectHeader from '../../components/ProjectHeader';
 
 function Project3({ scrollY }) {
+    const [headerVisible, setHeaderVisible] = useState(false);
+
+    useEffect(() => {
+        return scrollY.on("change", (latest) => {
+            setHeaderVisible(latest > 100);
+        });
+    }, [scrollY]);
+
     return (
         <section className={styles.projectPage}>
+            <ProjectHeader isVisible={headerVisible} />
             {/* Hero section */}
             <motion.div
                 className={styles.hero}
