@@ -7,17 +7,26 @@ const SmoothScroll = ({ children, setScrollY }) => {
     const locomotiveScrollRef = useRef(null);
     const location = useLocation();
 
+    // Disable browser's native scroll restoration (one-time setup)
+    if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+    }
+
+    // Destroy and recreate Locomotive on every route change to ensure fresh state
     useEffect(() => {
-        // Disable browser's native scroll restoration to prevent conflicts with Locomotive Scroll
-        if ('scrollRestoration' in window.history) {
-            window.history.scrollRestoration = 'manual';
+        // Destroy existing instance if it exists
+        if (locomotiveScrollRef.current) {
+            locomotiveScrollRef.current.destroy();
+            locomotiveScrollRef.current = null;
         }
 
-        // Force native scroll to top on route change to prevent restoration issues
-        window.scrollTo(0, 0);
+        // CRITICAL: Manually clear any lingering transforms on the container
+        if (scrollRef.current) {
+            scrollRef.current.style.transform = '';
+        }
 
-        if (!locomotiveScrollRef.current) {
-            // Initialize Locomotive Scroll on first mount
+        // Wait for DOM to update, then create fresh instance
+        requestAnimationFrame(() => {
             locomotiveScrollRef.current = new LocomotiveScroll({
                 el: scrollRef.current,
                 smooth: true,
@@ -30,16 +39,14 @@ const SmoothScroll = ({ children, setScrollY }) => {
                 setScrollY(obj.scroll.y);
             });
 
-            // Ensure Locomotive Scroll starts at 0
+            // Ensure it starts at 0
             locomotiveScrollRef.current.scrollTo(0, { duration: 0, disableLerp: true });
-        }
+        });
+
+        // Also reset native scroll
+        window.scrollTo(0, 0);
 
         return () => {
-            // Optional: Reset to auto on unmount, though usually not strictly necessary for SPA root
-            if ('scrollRestoration' in window.history) {
-                window.history.scrollRestoration = 'auto';
-            }
-
             if (locomotiveScrollRef.current) {
                 locomotiveScrollRef.current.destroy();
                 locomotiveScrollRef.current = null;

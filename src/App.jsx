@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useMotionValue } from "motion/react";
 import { AnimatePresence } from 'motion/react';
 import SmoothScroll from "./components/SmoothScroll";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './pages/home';
 import Project1 from './pages/project1';
 import Project2 from './pages/project2';
@@ -13,8 +13,14 @@ import LoadingScreen from './components/LoadingScreen';
 
 function App() {
   const scrollY = useMotionValue(0);
+  const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
   const [headerVisible, setHeaderVisible] = useState(false);
+
+  // Reset scrollY to 0 on route change
+  useEffect(() => {
+    scrollY.set(0);
+  }, [location.pathname, scrollY]);
 
   useEffect(() => {
     return scrollY.on("change", (latest) => {
