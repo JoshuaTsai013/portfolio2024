@@ -48,7 +48,9 @@ function OpeningVideo({ onVideoSection }) {
                 </video>
 
                 {/* Gradient overlay for better text visibility */}
-                <div className={styles.overlay}></div>
+                <div className={styles.overlay}>
+                    <h1>AAA</h1>
+                </div>
 
                 {/* Scroll hint indicator */}
                 <motion.div

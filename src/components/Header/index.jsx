@@ -45,10 +45,10 @@ function Header({ isVisible = true }) {
   };
 
   const navLinks = [
-    { name: "HOME", path: "/" },
-    { name: "ABOUT US", path: "/" }, // Assuming these might point to different routes later
-    { name: "MUSIC", path: "/" },
-    { name: "3D MODEL", path: "/" },
+    { name: "HOME", path: "/home" },
+    { name: "ABOUT US", path: "/project/1" }, // Assuming these might point to different routes later
+    { name: "MUSIC", path: "/project/2" },
+    { name: "3D MODEL", path: "/project/3" },
   ];
 
   return (

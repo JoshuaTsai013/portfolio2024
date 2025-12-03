@@ -44,10 +44,10 @@ function App() {
           <Header isVisible={headerVisible} />
           <SmoothScroll setScrollY={handleScrollY}>
             <Routes>
-              <Route path="/" element={<HomePage scrollY={scrollY} />} />
-              <Route path="/project1" element={<Project1 scrollY={scrollY} />} />
-              <Route path="/project2" element={<Project2 scrollY={scrollY} />} />
-              <Route path="/project3" element={<Project3 scrollY={scrollY} />} />
+              <Route path="/home" element={<HomePage scrollY={scrollY} />} />
+              <Route path="/project/1" element={<Project1 scrollY={scrollY} />} />
+              <Route path="/project/2" element={<Project2 scrollY={scrollY} />} />
+              <Route path="/project/3" element={<Project3 scrollY={scrollY} />} />
               <Route path="/AboutUs" element={<div>About Us Page</div>} />
               <Route path="/Music" element={<div>Music Page</div>} />
               <Route path="/Model" element={<div>3D Model Page</div>} />

@@ -9,7 +9,7 @@ function ProjectShowcase() {
             title: 'TechVision AI Platform',
             description: 'Advanced AI-powered platform for next-gen solutions',
             image: '/project1_cover.png',
-            path: '/project1',
+            path: '/project/1',
             fullWidth: true
         },
         {
@@ -17,7 +17,7 @@ function ProjectShowcase() {
             title: 'SoundWave Studio',
             description: 'Innovative music production and sound design',
             image: '/project2_cover.png',
-            path: '/project2',
+            path: '/project/2',
             fullWidth: false
         },
         {
@@ -25,7 +25,7 @@ function ProjectShowcase() {
             title: '3D Design Lab',
             description: 'Professional 3D modeling and visualization',
             image: '/project3_cover.png',
-            path: '/project3',
+            path: '/project/3',
             fullWidth: false
         }
     ];
