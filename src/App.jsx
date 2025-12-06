@@ -33,7 +33,7 @@ function App() {
       {!isLoading && (
         <SmoothScroll setScrollY={handleScrollY}>
           <Routes>
-            <Route path="/home" element={<HomePage scrollY={scrollY} />} />
+            <Route path="/" element={<HomePage scrollY={scrollY} />} />
             <Route path="/project/1" element={<Project1 scrollY={scrollY} />} />
             <Route path="/project/2" element={<Project2 scrollY={scrollY} />} />
             <Route path="/project/3" element={<Project3 scrollY={scrollY} />} />

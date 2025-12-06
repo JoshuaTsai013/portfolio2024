@@ -16,7 +16,7 @@ function ProjectHeader({ isVisible = true }) {
         <motion.header
             className={`${styles.projectHeader} fixed top-0 left-0 w-full z-50 px-6 py-4 flex items-center`}
             initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
+            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20, pointerEvents: isVisible ? "auto" : "none" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
         >
             <button
