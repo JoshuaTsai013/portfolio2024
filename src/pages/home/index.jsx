@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import OpeningVideo from '../../components/OpeningVideo';
-import Parallex from "../../components/Parallax";
+import ParallaxFooter from "../../components/ParallaxFooter";
 import Model from "../../components/Model";
 import ProjectShowcase from "../../components/ProjectShowcase";
 import Footer from "../../components/Footer";
@@ -20,10 +20,10 @@ function HomePage({ scrollY }) {
     <section>
       <Header isVisible={headerVisible} />
       <OpeningVideo />
-      {/* <Parallex scrollY={scrollY} /> */}
       <Model scrollY={scrollY} />
       <ProjectShowcase />
       <Footer />
+      <ParallaxFooter scrollY={scrollY} />
     </section>
   );
 }
