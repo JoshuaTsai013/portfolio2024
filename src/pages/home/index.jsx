@@ -22,7 +22,7 @@ function HomePage({ scrollY }) {
       <OpeningVideo />
       <Model scrollY={scrollY} />
       <ProjectShowcase />
-      <Footer />
+      {/* <Footer /> */}
       <ParallaxFooter scrollY={scrollY} />
     </section>
   );

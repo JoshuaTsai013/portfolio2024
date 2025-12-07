@@ -1,8 +1,16 @@
-.footer {
-  width: 100%;
-  background: linear-gradient(180deg, #0a0a0a 0%, #1a0a2e 100%);
-  border-top: 1px solid rgba(0, 255, 255, 0.1);
-  position: relative;
+/* ParallaxFooter.module.css */
+
+.brandContainer {
+  position: absolute;
+  left: 1rem;
+  top: 5%;
+}
+
+.socialContainer {
+  position: absolute;
+  right: 1rem;
+  top: 5%;
+  text-align: right;
 }
 
 .container {
@@ -27,9 +35,9 @@
 }
 
 .brandName {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.3rem 0;
   background: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -38,7 +46,7 @@
 
 .tagline {
   color: rgba(255, 255, 255, 0.6);
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   margin: 0;
   font-weight: 300;
 }
@@ -53,21 +61,22 @@
 
 .socialTitle {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: 500;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.5rem 0;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .socialLinks {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.75rem;
+  justify-content: flex-end;
 }
 
 .socialLink {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,8 +89,8 @@
 }
 
 .socialLink svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .socialLink:hover {
@@ -118,33 +127,65 @@
   font-weight: 300;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .container {
-    padding: 3rem 1.5rem 1.5rem;
+/* Tablet and up */
+@media (min-width: 768px) {
+  .brandContainer {
+    left: 3rem;
   }
 
-  .content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
+  .socialContainer {
+    right: 3rem;
   }
 
-  .brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .brandName {
+    font-size: 1.8rem;
+    margin: 0 0 0.5rem 0;
   }
 
-  .social {
-    align-items: center;
+  .tagline {
+    font-size: 0.95rem;
+  }
+
+  .socialTitle {
+    font-size: 0.9rem;
+    margin: 0 0 1rem 0;
   }
 
   .socialLinks {
-    gap: 1rem;
+    gap: 1.25rem;
+  }
+
+  .socialLink {
+    width: 40px;
+    height: 40px;
+  }
+
+  .socialLink svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .brandContainer {
+    left: 5rem;
+  }
+
+  .socialContainer {
+    right: 5rem;
+  }
+
+  .brandName {
+    font-size: 2rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .socialLinks {
+    gap: 1.5rem;
   }
 
   .socialLink {
@@ -155,5 +196,85 @@
   .socialLink svg {
     width: 22px;
     height: 22px;
+  }
+}
+
+/* Large Desktop / 4K */
+@media (min-width: 1920px) {
+  .brandContainer {
+    left: 8rem;
+  }
+
+  .socialContainer {
+    right: 8rem;
+  }
+
+  .brandName {
+    font-size: 2.5rem;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+  }
+
+  .socialTitle {
+    font-size: 1rem;
+    margin: 0 0 1.25rem 0;
+  }
+
+  .socialLinks {
+    gap: 2rem;
+  }
+
+  .socialLink {
+    width: 52px;
+    height: 52px;
+  }
+
+  .socialLink svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* Ultra-wide / 4K+ */
+@media (min-width: 2560px) {
+  .brandContainer {
+    left: 12rem;
+  }
+
+  .socialContainer {
+    right: 12rem;
+  }
+
+  .brandName {
+    font-size: 3rem;
+  }
+
+  .tagline {
+    font-size: 1.4rem;
+  }
+
+  .socialTitle {
+    font-size: 1.1rem;
+  }
+
+  .socialLink {
+    width: 60px;
+    height: 60px;
+  }
+
+  .socialLink svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Mobile landscape */
+@media (max-width: 767px) and (orientation: landscape) {
+  .brandContainer {
+  }
+
+  .socialContainer {
   }
 }

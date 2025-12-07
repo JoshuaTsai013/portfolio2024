@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import useWindowDimensions from "../Hooks/useWindowDimensions";
-import { motion, useTransform } from "motion/react";
+import { motion, useMotionValueEvent, useTransform, useTime } from "motion/react";
 import styles from './parallaxFooter.module.css';
 
 function ParallaxFooter({ scrollY }) {
@@ -9,7 +9,7 @@ function ParallaxFooter({ scrollY }) {
   const isMobile = width < 768;
   const sectionRef = useRef(null);
   const [sectionOffset, setSectionOffset] = useState(0);
-
+  const [sectionHeight, setSectionHeight] = useState(1);
 
   // Get the actual position of the parallax section when component mounts
   useEffect(() => {
@@ -18,6 +18,7 @@ function ParallaxFooter({ scrollY }) {
         const rect = sectionRef.current.getBoundingClientRect();
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         setSectionOffset(rect.top + scrollTop);
+        setSectionHeight(rect.height || 1);
       }
     };
 
@@ -29,16 +30,41 @@ function ParallaxFooter({ scrollY }) {
     return () => window.removeEventListener('resize', updateOffset);
   }, []);
 
-  // Create a "local" scroll value that starts from 0 when this section begins
-  // This makes the parallax effects relative to this section, not the page top
-  const localScrollY = useTransform(scrollY, (value) => Math.max(0, value - sectionOffset));
+  const viewportHeight = height || 1;
 
-  // Now use localScrollY for all transforms - values work as if this section is at the top
-  const scaleY = useTransform(localScrollY, [0, 1000], isMobile ? [1, 1.7] : [1, 1.5]);
-  const moveY = useTransform(localScrollY, [0, 900], isMobile ? [0, 200] : [0, 630]);
-  const moveSmallY = useTransform(localScrollY, [0, height], ["0vh", "-25vh"]);
-  const moveBottom = useTransform(localScrollY, [0, 500], isMobile ? [0, 230] : [0, 530]);
-  const scaleBottom = useTransform(localScrollY, [200, 800], isMobile ? [1, 1.3] : [1, 0.6]);
+  // Create a "local" scroll value that starts from 0 when the section first enters the viewport
+  // and reaches 1 after scrolling one full section height (e.g., the full 150vh span)
+  const localScrollY = useTransform(scrollY, (value) => {
+    const entryPoint = sectionOffset - viewportHeight; // when the top first touches the bottom of the viewport
+    const span = Math.max(1, sectionHeight);           // scroll distance to cover the section height
+    const normalized = (value - entryPoint) / span;
+    return Math.min(1, Math.max(0, normalized));
+  });
+
+  // Log the normalized value (0-1) to the console for debugging
+  // useMotionValueEvent(localScrollY, "change", (value) => {
+  //   console.log("localScrollY", value);
+  // });
+
+  // Add a continuous floating animation for the sun using sine wave
+  const time = useTime();
+  const sunFloat = useTransform(time, (t) => {
+    return Math.sin(t / 800) * (isMobile ? 10 : 15); // Float up/down by 10-15px
+  });
+
+  // Create pulsing opacity for gridLine that syncs with sun animation
+  const gridOpacity = useTransform(time, (t) => {
+    const sineValue = (Math.sin(t / 300) + 1) / 2; // 0 to 1
+    return 0.6 + (sineValue * 0.4); // Map to 0.6 to 1 range
+  });
+
+  const sunMoveY = useTransform(localScrollY, [0, 0.2], isMobile ? [0, (sectionHeight * 0.34)] : [0, (sectionHeight * 0.55)]);
+  const sunScale = useTransform(localScrollY, [0, 0.9], isMobile ? [0.5, 1] : [0.1, 1]);
+  const moveBrandY = useTransform(localScrollY, [0.5, 0.9],isMobile ? [0, (sectionHeight * 0.2)] : [0, (sectionHeight * 0.4)]);
+  const moveSocialY = useTransform(localScrollY, [0, 0.3],isMobile ? [0, (sectionHeight * 0.3)] :[0, (sectionHeight * 0.4)]);
+  const moveBottom = useTransform(localScrollY, [0, 0.9],isMobile ? [0, (sectionHeight * 0.2)] : [0, (sectionHeight * 0.44)]);
+  const scaleBottomY = useTransform(localScrollY, [0.2, 0.8], isMobile ? [2.4, 1] : [2.2, 1]);
+  const scaleBottomX = useTransform(localScrollY, [0.2, 0.8], isMobile ? [1, 1] : [1.5, 1.1]);
 
   const socialLinks = [
     {
@@ -74,20 +100,22 @@ function ParallaxFooter({ scrollY }) {
     <div
       ref={sectionRef}
       data-scroll-section
-      style={{ height: `${height + 500}px` }}
-      className="w-full bg-purple-950 bg-opacity-60"
-
+      className="h-[100vh] md:h-[160vh] w-full bg-purple-950 bg-opacity-60"
     >
-      <motion.div className="h-screen w-full relative left-0 top-0">
+      <motion.div className="h-screen w-full sticky left-0" style={{ top: 0 }}>
         <motion.img
-          style={{ transformOrigin: "top", height: `${height + 400}px` }}
-          className="h-screen absolute m-auto left-0 right-0 Top-0"
+          style={{ transformOrigin: "top" }}
+          className={`absolute m-auto left-0 right-0 top-0 ${isMobile ? 'h-[100vh]' : 'h-[160vh]'}`}
           src="ParallexImages/backgroundUpLineSize.png"
           alt="backgroundUpLineSize"
         />
         <motion.img
-          style={{ y: moveY }}
-          className="h-40 md:h-80 absolute m-auto left-0 right-0 bottom-10"
+          style={{ 
+            y: useTransform(() => sunMoveY.get() + sunFloat.get()), 
+            scale: sunScale, 
+            transformOrigin: "bottom" 
+          }}
+          className="h-60 md:h-80 absolute m-auto left-0 right-0 bottom-1/2"
           src="ParallexImages/sunSize.png"
           alt="sunSize"
         />
@@ -97,17 +125,11 @@ function ParallaxFooter({ scrollY }) {
           src="ParallexImages/welcome2.png"
           alt="welcome2"
         /> */}
-        <motion.div style={{ y: moveSmallY, transformOrigin: "bottom" }} className="h-12 md:h-20 absolute m-auto left-4 md:left-20 bottom-0">
+        <motion.div style={{ y: moveBrandY, transformOrigin: "bottom" }} className={styles.brandContainer}>
           <h3 className={styles.brandName}>Portfolio</h3>
           <p className={styles.tagline}>Creating digital experiences</p>
         </motion.div>
-        {/* <motion.img
-          style={{ y: moveSmallY }}
-          className="h-12 md:h-20 absolute m-auto right-20 top-32"
-          src="ParallexImages/welcome2.png"
-          alt="welcome2"
-        /> */}
-        <motion.div style={{ y: moveSmallY, transformOrigin: "bottom" }} className="h-12 md:h-20 absolute m-auto right-4 md:right-20 bottom-0">
+        <motion.div style={{ y: moveSocialY, transformOrigin: "bottom" }} className={styles.socialContainer}>
           <p className={styles.socialTitle}>Connect With Me</p>
           <div className={styles.socialLinks}>
             {socialLinks.map((link) => (
@@ -126,14 +148,14 @@ function ParallaxFooter({ scrollY }) {
           </div>
         </motion.div>
         <motion.img
-          style={{ y: moveBottom, scaleY: scaleBottom, transformOrigin: "bottom" }}
-          className="h-1/2 absolute m-auto left-0 right-0 -bottom-2"
+          style={{ y: moveBottom, scaleY: scaleBottomY, scaleX: scaleBottomX, transformOrigin: "bottom" }}
+          className={`absolute m-auto left-0 right-0 bottom-0 object-fill overflow-hidden ${isMobile ? 'h-[40vh]' : 'h-[50vh]'} w-full`}
           src="ParallexImages/backgroundDownSize.png"
           alt="backgroundDownSize"
         />
         <motion.img
-          style={{ y: moveBottom, scaleY: scaleBottom, transformOrigin: "bottom" }}
-          className="h-1/2 absolute m-auto left-0 right-0 -bottom-2"
+          style={{ y: moveBottom, scaleY: scaleBottomY, scaleX: scaleBottomX, opacity: gridOpacity, transformOrigin: "bottom" }}
+          className={`absolute m-auto left-0 right-0 bottom-0 object-fill overflow-hidden ${isMobile ? 'h-[40vh]' : 'h-[50vh]'} w-screen`}
           src="ParallexImages/gridLineSize.png"
           alt="gridLineSize"
         />
