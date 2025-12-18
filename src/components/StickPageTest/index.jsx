@@ -1,0 +1,103 @@
+import { useRef, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import useWindowDimensions from "../Hooks/useWindowDimensions";
+import { motion, useMotionValueEvent, useTransform, useSpring } from "motion/react";
+
+function StickPageTest({ scrollY }) {
+
+  const { height, width } = useWindowDimensions();
+  const isMobile = width < 768;
+  const sectionRef = useRef(null);
+  const [sectionOffset, setSectionOffset] = useState(0);
+  const [sectionHeight, setSectionHeight] = useState(1);
+
+  // Get the actual position of the parallax section when component mounts
+  useEffect(() => {
+    const updateOffset = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        setSectionOffset(rect.top + scrollTop);
+        setSectionHeight(rect.height || 1);
+      }
+    };
+
+    // Initial calculation
+    updateOffset();
+
+    // Recalculate on resize
+    window.addEventListener('resize', updateOffset);
+    return () => window.removeEventListener('resize', updateOffset);
+  }, []);
+
+  const viewportHeight = height || 1;
+
+  // Create a "local" scroll value that starts from 0 when section enters viewport
+  // and reaches 1 when section bottom completely leaves viewport top
+  const localScrollY = useTransform(scrollY, (value) => {
+    const entryPoint = sectionOffset - viewportHeight; // when section top touches viewport bottom
+    const exitPoint = sectionOffset + sectionHeight;   // when section bottom reaches viewport top
+    const span = Math.max(1, exitPoint - entryPoint);  // total scroll distance = sectionHeight + viewportHeight
+    const normalized = (value - entryPoint) / span;
+    return Math.min(1, Math.max(0, normalized));
+  });
+  // Log the normalized value (0-1) to the console for debugging
+  useMotionValueEvent(localScrollY, "change", (value) => {
+    console.log("localScrollY", value);
+  });
+  // First text: appears early and fades out at midpoint
+  const text1Opacity = useTransform(
+    localScrollY,
+    [0.16, 0.24, 0.4, 0.45],
+    [0, 1, 1, 0]
+  );
+
+  // Second text: appears after first one fades out
+  const text2Opacity = useTransform(
+    localScrollY,
+    [0.45, 0.5, 0.75, 0.82],
+    [0, 1, 1, 0]
+  );
+
+  // Render texts outside scroll container using Portal
+  const stickyText = createPortal(
+    <>
+      <motion.div
+        className="w-full h-screen flex justify-center items-center fixed top-0 left-0 pointer-events-none z-50"
+        style={{
+          opacity: text1Opacity
+        }}
+      >
+        <div className="w-3/4">
+          <h1 className="text-xl md:text-6xl">This is the first text. It appears early in the scroll.</h1>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="w-full h-screen flex justify-center items-center fixed top-0 left-0 pointer-events-none z-50"
+        style={{
+          opacity: text2Opacity
+        }}
+      >
+        <div className="w-3/4">
+          <h1 className="text-xl md:text-6xl">This is the second text. It appears after the first fades out.</h1>
+        </div>
+      </motion.div>
+    </>,
+    document.body
+  );
+
+  return (
+    <>
+      {stickyText}
+      <div
+        ref={sectionRef}
+        data-scroll-section
+        className="h-[200vh] md:h-[300vh] w-full bg-opacity-60 relative bg-gradient-to-b from-orange-400 to-purple-950"
+      >
+      </div>
+    </>
+  );
+}
+
+export default StickPageTest;
