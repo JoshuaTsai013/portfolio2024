@@ -7,7 +7,7 @@ function TypewriterText({ text, className, trigger = false, speed = 50 }) {
   useEffect(() => {
     // Reset when trigger becomes false
     if (!trigger) {
-      setDisplayText(text.split('').map(char => char === ' ' ? ' ' : '-').join(''));
+      setDisplayText(text.split('').map(char => char === ' ' ? ' ' : '_').join(''));
       setCurrentIndex(0);
       return;
     }
@@ -21,7 +21,7 @@ function TypewriterText({ text, className, trigger = false, speed = 50 }) {
             if (i <= currentIndex) {
               return char;
             }
-            return char === ' ' ? ' ' : '-';
+            return char === ' ' ? ' ' : '_';
           });
           return display.join('');
         });
@@ -34,7 +34,7 @@ function TypewriterText({ text, className, trigger = false, speed = 50 }) {
 
   return (
     <h1 className={className} style={{ fontFamily: 'monospace', letterSpacing: '0.05em' }}>
-      {displayText || text.split('').map(char => char === ' ' ? ' ' : '-').join('')}
+      {displayText || text.split('').map(char => char === ' ' ? ' ' : '_').join('')}
     </h1>
   );
 }

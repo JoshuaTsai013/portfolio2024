@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import OpeningVideo from '../../components/OpeningVideo';
 import ParallaxFooter from "../../components/ParallaxFooter";
 import Model from "../../components/Model";
+import ParallaxPage from '../../components/ParallaxPage';
+import StickPageTest from '../../components/StickPageTest';
 import ProjectShowcase from "../../components/ProjectShowcase";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -20,7 +22,9 @@ function HomePage({ scrollY }) {
     <section>
       <Header isVisible={headerVisible} />
       <OpeningVideo />
-      <Model scrollY={scrollY} />
+      {/* <ParallaxPage scrollY={scrollY} /> */}
+      {/* <Model scrollY={scrollY} /> */}
+      <StickPageTest scrollY={scrollY} />
       <ProjectShowcase />
       {/* <Footer /> */}
       <ParallaxFooter scrollY={scrollY} />
