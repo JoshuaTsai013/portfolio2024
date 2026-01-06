@@ -9,7 +9,7 @@ function ProjectHeader({ isVisible = true }) {
     const [isHovered, setIsHovered] = useState(false);
 
     const handleBackClick = () => {
-        navigate('/');
+        navigate('/', { state: { target: 'project-showcase' } });
     };
 
     const headerContent = (

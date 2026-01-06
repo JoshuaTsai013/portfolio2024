@@ -31,7 +31,7 @@ function ProjectShowcase() {
     ];
 
     return (
-        <section className={styles.showcase} data-scroll-section>
+        <section id="project-showcase" className={styles.showcase} data-scroll-section>
             <div className={styles.container}>
                 {/* Section title */}
                 <motion.div

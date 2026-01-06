@@ -39,8 +39,17 @@ const SmoothScroll = ({ children, setScrollY }) => {
                 setScrollY(obj.scroll.y);
             });
 
-            // Ensure it starts at 0
-            locomotiveScrollRef.current.scrollTo(0, { duration: 0, disableLerp: true });
+            // Handle initial scroll position
+            if (location.state && location.state.target) {
+                const targetElement = document.querySelector(`#${location.state.target}`);
+                if (targetElement) {
+                    locomotiveScrollRef.current.scrollTo(targetElement, { duration: 0, disableLerp: true });
+                } else {
+                    locomotiveScrollRef.current.scrollTo(0, { duration: 0, disableLerp: true });
+                }
+            } else {
+                locomotiveScrollRef.current.scrollTo(0, { duration: 0, disableLerp: true });
+            }
         });
 
         // Also reset native scroll
