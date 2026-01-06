@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import useWindowDimensions from "../Hooks/useWindowDimensions";
 import { motion, useMotionValueEvent, useTransform, useSpring } from "motion/react";
 import TypewriterText from "../TypewriterText";
+import ScrollTypewriterText from "../ScrollTypewriterText";
 
 function StickPageTest({ scrollY }) {
 
@@ -46,18 +47,18 @@ function StickPageTest({ scrollY }) {
   });
   // Log the normalized value (0-1) to the console for debugging
   useMotionValueEvent(localScrollY, "change", (value) => {
-    console.log("localScrollY", value);
-    
+    // console.log("localScrollY", value);
+
     // Trigger typewriter animation when text becomes visible
     if (value >= 0.26) {
       setText1Trigger(true);
-    } else if (value <= 0.1){
+    } else if (value <= 0.1) {
       setText1Trigger(false);
     }
-    
+
     if (value >= 0.5) {
       setText2Trigger(true);
-    } else if (value <= 0.4){
+    } else if (value <= 0.4) {
       setText2Trigger(false);
     }
   });
@@ -71,7 +72,7 @@ function StickPageTest({ scrollY }) {
   // Second text: appears after first one fades out
   const text2Opacity = useTransform(
     localScrollY,
-    [0.45, 0.5, 0.75, 0.82],
+    [0.45, 0.5, 0.75, 0.92],
     [0, 1, 1, 0]
   );
 
@@ -82,9 +83,15 @@ function StickPageTest({ scrollY }) {
   );
   const moveOut = useTransform(
     localScrollY,
-    [0.75, 0.82],
+    [0.75, 0.92],
     [0, -sectionHeight * 0.1]
   );
+
+  // Create progress values for scroll typing text
+  // Text 1 appears from 0.1 to 0.4
+  const text1Progress = useTransform(localScrollY, [0.1, 0.35], [0, 1]);
+  // Text 2 appears from 0.45 to 0.7
+  const text2Progress = useTransform(localScrollY, [0.45, 0.7], [0, 1]);
 
   // Render texts outside scroll container using Portal
   const stickyText = createPortal(
@@ -97,11 +104,16 @@ function StickPageTest({ scrollY }) {
         }}
       >
         <div className="w-3/4">
-          <TypewriterText 
+          {/* <TypewriterText 
             text="This is the first text. It appears early in the scroll."
             className="text-xl md:text-6xl"
             trigger={text1Trigger}
             speed={40}
+          /> */}
+          <ScrollTypewriterText
+            text="This is the first text. It appears early in the scroll."
+            className="text-xl md:text-6xl text-white font-bold"
+            progress={text1Progress}
           />
         </div>
       </motion.div>
@@ -114,11 +126,16 @@ function StickPageTest({ scrollY }) {
         }}
       >
         <div className="w-3/4">
-          <TypewriterText 
+          {/* <TypewriterText 
             text="This is the second text. It appears after the first fades out."
             className="text-xl md:text-6xl"
             trigger={text2Trigger}
             speed={40}
+          /> */}
+          <ScrollTypewriterText
+            text="This is the second text. It appears after the first fades out."
+            className="text-xl md:text-6xl text-white font-bold"
+            progress={text2Progress}
           />
         </div>
       </motion.div>
@@ -132,7 +149,7 @@ function StickPageTest({ scrollY }) {
       <div
         ref={sectionRef}
         data-scroll-section
-        className="h-[200vh] md:h-[300vh] w-full bg-opacity-60 relative bg-gradient-to-b from-orange-400 to-purple-950"
+        className="h-[250vh] md:h-[500vh] w-full bg-opacity-60 relative bg-gradient-to-b from-orange-400 to-purple-950"
       >
       </div>
     </>
