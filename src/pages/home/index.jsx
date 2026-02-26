@@ -3,7 +3,7 @@ import OpeningVideo from '../../components/OpeningVideo';
 import ParallaxFooter from "../../components/ParallaxFooter";
 import Model from "../../components/Model";
 import ParallaxPage from '../../components/ParallaxPage';
-import StickPageTest from '../../components/StickPageTest';
+import OneLineTitlePage from '../../components/OneLineTitlePage';
 import ProjectShowcase from "../../components/ProjectShowcase";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -24,7 +24,7 @@ function HomePage({ scrollY }) {
       <OpeningVideo />
       {/* <ParallaxPage scrollY={scrollY} /> */}
       {/* <Model scrollY={scrollY} /> */}
-      <StickPageTest scrollY={scrollY} />
+      <OneLineTitlePage scrollY={scrollY} />
       <ProjectShowcase />
       {/* <Footer /> */}
       <ParallaxFooter scrollY={scrollY} />

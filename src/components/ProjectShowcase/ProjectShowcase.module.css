@@ -1,7 +1,6 @@
 .showcase {
   width: 100%;
   padding: 8rem 0;
-  background: linear-gradient(180deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
   position: relative;
 }
 
@@ -20,7 +19,8 @@
 .title {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 700;
-  background: linear-gradient(135deg, #00ffff 0%, #ff00ff 50%, #ffff00 100%);
+  background: linear-gradient(135deg, #fcf8ed 0%, #b8b5ad 70%, #b8b5ad 100%);
+  /* background-color: #deddd9; */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -76,8 +76,7 @@
 .banner:hover {
   transform: translateY(-8px);
   box-shadow: 
-    0 10px 30px rgba(148, 3, 252, 0.6),
-    0 0 20px rgba(90, 3, 252, 0.4);
+    0px 0px 14px 4px rgba(184, 181, 173, 0.4);
 }
 
 /* Image container */
@@ -97,7 +96,7 @@
 }
 
 .banner:hover .image {
-  transform: scale(1.1);
+  transform: scale(1.05);
   filter: brightness(0.7);
 }
 
@@ -137,7 +136,7 @@
 .projectNumber {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #00ffff;
+  color: #888888;
   letter-spacing: 0.2em;
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
@@ -151,8 +150,8 @@
 }
 
 .banner:hover .projectTitle {
-  color: #00ffff;
-  text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  color: #ececec;
+  text-shadow: 0 0 20px rgba(208, 208, 208, 0.6);
 }
 
 .projectDescription {

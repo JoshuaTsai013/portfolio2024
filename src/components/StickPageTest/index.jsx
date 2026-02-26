@@ -78,7 +78,7 @@ function StickPageTest({ scrollY }) {
 
   const moveIn = useTransform(
     localScrollY,
-    [0, 0.25],
+    [0, 0.14],
     [sectionHeight * 0.25, 0]
   );
   const moveOut = useTransform(
@@ -149,7 +149,7 @@ function StickPageTest({ scrollY }) {
       <div
         ref={sectionRef}
         data-scroll-section
-        className="h-[250vh] md:h-[500vh] w-full bg-opacity-60 relative bg-gradient-to-b from-orange-400 to-purple-950"
+        className="h-[250vh] md:h-[400vh] w-full"
       >
       </div>
     </>

@@ -10,7 +10,7 @@ function ScrollTypewriterText({ text = "", className, progress }) {
     const safeIndex = Math.min(charIndex, text.length);
     
     const visiblePart = text.substring(0, safeIndex);
-    const hiddenPart = text.substring(safeIndex).split('').map(char => char === ' ' ? ' ' : '_').join('');
+    const hiddenPart = text.substring(safeIndex).split('').map(char => char === ' ' ? ' ' : 'x').join('');
     setDisplayText(visiblePart + hiddenPart);
   };
 

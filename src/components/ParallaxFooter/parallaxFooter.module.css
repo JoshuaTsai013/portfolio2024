@@ -38,7 +38,7 @@
   font-size: 2rem;
   font-weight: 700;
   margin: 0 0 0.3rem 0;
-  background: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%);
+  background: linear-gradient(135deg, #fcf8ed 0%, #b8b5ad 70%, #b8b5ad 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -94,25 +94,25 @@
 }
 
 .socialLink:hover {
-  color: #00ffff;
-  background: rgba(0, 255, 255, 0.1);
-  border-color: #00ffff;
+  color: #e1f1f1;
+  background: rgba(68, 68, 68, 0.1);
+  border-color: #e1f1f1;
   transform: translateY(-3px);
-  box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
+  box-shadow: 0 5px 20px rgba(238, 255, 255, 0.3);
 }
 
 .socialLink:nth-child(2):hover {
-  color: #ff00ff;
+  color: #C13584;
   background: rgba(255, 0, 255, 0.1);
-  border-color: #ff00ff;
+  border-color: #C13584;
   box-shadow: 0 5px 20px rgba(255, 0, 255, 0.3);
 }
 
 .socialLink:nth-child(3):hover {
-  color: #ffff00;
-  background: rgba(255, 255, 0, 0.1);
-  border-color: #ffff00;
-  box-shadow: 0 5px 20px rgba(255, 255, 0, 0.3);
+  color: #0072b1;
+  background: rgba(0, 114, 177, 0.1);
+  border-color: #0072b1;
+  box-shadow: 0 5px 20px rgba(0, 114, 177, 0.3);
 }
 
 /* Bottom section */
@@ -271,10 +271,10 @@
 }
 
 /* Mobile landscape */
-@media (max-width: 767px) and (orientation: landscape) {
+/* @media (max-width: 767px) and (orientation: landscape) {
   .brandContainer {
   }
 
   .socialContainer {
   }
-}
+} */
