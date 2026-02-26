@@ -2,6 +2,7 @@
   width: 100%;
   padding: 8rem 0;
   position: relative;
+  background: #272727;
 }
 
 .container {
@@ -74,8 +75,7 @@
 }
 
 .banner:hover {
-  transform: translateY(-8px);
-  box-shadow: 
+  box-shadow:
     0px 0px 14px 4px rgba(184, 181, 173, 0.4);
 }
 
@@ -97,7 +97,7 @@
 
 .banner:hover .image {
   transform: scale(1.05);
-  filter: brightness(0.7);
+  filter: brightness(0.9);
 }
 
 /* Overlay gradient */
@@ -107,12 +107,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0.9) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.9) 100%);
   transition: opacity 0.4s ease;
 }
 

@@ -85,7 +85,7 @@ function OneLineTitlePage({ scrollY }) {
             <div
                 ref={sectionRef}
                 data-scroll-section
-                className="h-[150vh] md:h-[200vh] w-full"
+                className="h-[200vh] md:h-[250vh] w-full bg-[#373737]"
             >
             </div>
         </>

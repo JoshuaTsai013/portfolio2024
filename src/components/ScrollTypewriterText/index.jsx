@@ -8,21 +8,21 @@ function ScrollTypewriterText({ text = "", className, progress }) {
     const clamped = Math.min(1, Math.max(0, value));
     const charIndex = Math.floor(clamped * text.length);
     const safeIndex = Math.min(charIndex, text.length);
-    
+
     const visiblePart = text.substring(0, safeIndex);
     const hiddenPart = text.substring(safeIndex).split('').map(char => char === ' ' ? ' ' : 'x').join('');
     setDisplayText(visiblePart + hiddenPart);
   };
 
   useMotionValueEvent(progress, "change", (latest) => {
-    updateText(latest);
+    requestAnimationFrame(() => { updateText(latest); });
   });
-  
+
   useEffect(() => {
     if (progress) {
-       updateText(progress.get());
+      updateText(progress.get());
     } else {
-        updateText(0);
+      updateText(0);
     }
   }, [text, progress]);
 
