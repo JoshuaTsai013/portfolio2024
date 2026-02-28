@@ -1,27 +1,26 @@
-.showcase {
+/* ─── Section wrapper ────────────────────────────────────────────────────────── */
+
+.showcaseSection {
+  background-color: #6d6d6d;
   width: 100%;
-  padding: 8rem 0;
-  position: relative;
-  background: #272727;
+  overflow: hidden;
+  /* keeps child margins inside, so background covers gap areas */
 }
 
-.container {
+.headerContainer {
   max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  padding: 8rem;
 }
 
-/* Header section */
 .header {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 15rem;
 }
 
 .title {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 700;
   background: linear-gradient(135deg, #fcf8ed 0%, #b8b5ad 70%, #b8b5ad 100%);
-  /* background-color: #deddd9; */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -36,26 +35,12 @@
   letter-spacing: 0.05em;
 }
 
-/* Grid layout */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-}
+/* ─── Banner card (used inside the portal row) ───────────────────────────────── */
 
 .bannerWrapper {
   position: relative;
 }
 
-.fullWidth {
-  grid-column: 1 / -1;
-}
-
-.halfWidth {
-  grid-column: span 1;
-}
-
-/* Banner card */
 .banner {
   display: block;
   position: relative;
@@ -70,22 +55,13 @@
   cursor: pointer;
 }
 
-.fullWidth .banner {
-  height: 500px;
-}
-
 .banner:hover {
-  box-shadow:
-    0px 0px 14px 4px rgba(184, 181, 173, 0.4);
+  box-shadow: 0px 0px 14px 4px rgba(184, 181, 173, 0.4);
 }
 
-/* Image container */
 .imageContainer {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
 }
 
 .image {
@@ -100,13 +76,9 @@
   filter: brightness(0.9);
 }
 
-/* Overlay gradient */
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: linear-gradient(to bottom,
       rgba(0, 0, 0, 0.2) 0%,
       rgba(0, 0, 0, 0.5) 50%,
@@ -118,7 +90,6 @@
   opacity: 0.8;
 }
 
-/* Content */
 .content {
   position: absolute;
   bottom: 0;
@@ -160,7 +131,8 @@
   max-width: 600px;
 }
 
-/* Call to action */
+/* ─── Call-to-action ─────────────────────────────────────────────────────────── */
+
 .cta {
   display: flex;
   align-items: center;
@@ -191,69 +163,109 @@
   transform: translateX(5px);
 }
 
-/* Responsive design */
-@media (max-width: 1024px) {
-  .showcase {
-    padding: 6rem 0;
-  }
+/* ─── Scroll-sticky overlay (ShowcaseRow portal) ────────────────────────────── */
 
-  .header {
-    margin-bottom: 3rem;
-  }
-
-  .grid {
-    gap: 1.5rem;
-  }
-
-  .banner {
-    height: 350px;
-  }
-
-  .fullWidth .banner {
-    height: 400px;
-  }
-
-  .content {
-    padding: 2rem;
-  }
+/* Tall spacer — invisible DOM anchor for scroll position calculations */
+.rowSpacer {
+  height: 160vh;
+  visibility: hidden;
+  margin-bottom: 80vh;
 }
 
-@media (max-width: 768px) {
-  .showcase {
-    padding: 4rem 0;
-  }
+/* Card row fixed near the top of the viewport */
+.rowFixed {
+  position: fixed;
+  top: 15vh;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  z-index: 50;
+  padding: 0 3rem;
+  box-sizing: border-box;
+}
 
-  .container {
-    padding: 0 1.5rem;
+/* Container inside rowFixed must be full-height so the absolute imageContainer has size */
+.container {
+  height: 100%;
+}
+
+.rowFixed .banner {
+  height: 100%;
+}
+
+.rowFixed .bannerWrapper {
+  height: 100%;
+}
+
+/* Grid variants for full-width (1 card) and half-width (2 cards) rows */
+.rowGrid {
+  height: 100%;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.rowGridFull {
+  grid-template-columns: 1fr;
+}
+
+.rowGridHalf {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Description bar — fixed directly below the card row */
+.descriptionBar {
+  position: fixed;
+  top: calc(15vh + 50vh + 1rem);
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  pointer-events: none;
+  padding: 0 3rem;
+  box-sizing: border-box;
+}
+
+.descriptionBarInner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.descriptionBarHalf {
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+.descriptionItem {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Show the CTA arrow in the description bar and make the Link clickable */
+.descriptionBar .cta {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  text-decoration: none;
+  color: white;
+  flex-shrink: 0;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .headerContainer {
+    padding: 4rem 1.5rem;
   }
 
   .header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 4rem;
   }
 
   .subtitle {
     font-size: 1rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .halfWidth {
-    grid-column: 1 / -1;
-  }
-
-  .banner {
-    height: 300px;
-  }
-
-  .fullWidth .banner {
-    height: 350px;
-  }
-
-  .content {
-    padding: 1.5rem;
   }
 
   .projectTitle {
@@ -267,5 +279,22 @@
   .cta {
     opacity: 1;
     transform: translateX(0);
+  }
+
+  .rowFixed {
+    top: 3vh;
+    height: 45vh;
+  }
+
+  .descriptionBar {
+    top: calc(3vh + 45vh + 0.75rem);
+  }
+
+  .rowGridHalf {
+    grid-template-columns: 1fr;
+  }
+
+  .descriptionBarHalf {
+    flex-direction: column;
   }
 }

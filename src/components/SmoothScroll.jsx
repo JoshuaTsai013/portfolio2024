@@ -47,6 +47,8 @@ const SmoothScroll = ({ children, setScrollY }) => {
                 } else {
                     locomotiveScrollRef.current.scrollTo(0, { duration: 0, disableLerp: true });
                 }
+                // Clear the target from history state
+                window.history.replaceState({}, '');
             } else {
                 locomotiveScrollRef.current.scrollTo(0, { duration: 0, disableLerp: true });
             }

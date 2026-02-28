@@ -23,9 +23,9 @@ function HomePage({ scrollY }) {
       <Header isVisible={headerVisible} />
       <OpeningVideo />
       {/* <ParallaxPage scrollY={scrollY} /> */}
-      {/* <Model scrollY={scrollY} /> */}
+      {/* <Model scrollY={scrollY} /> */} 
       <OneLineTitlePage scrollY={scrollY} />
-      <ProjectShowcase />
+      <ProjectShowcase scrollY={scrollY} />
       {/* <Footer /> */}
       <ParallaxFooter scrollY={scrollY} />
     </section>
