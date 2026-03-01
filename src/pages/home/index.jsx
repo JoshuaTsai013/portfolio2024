@@ -1,16 +1,33 @@
-import Parallex from "../../components/Parallax";
+import { useState, useEffect } from 'react';
+import OpeningVideo from '../../components/OpeningVideo';
+import ParallaxFooter from "../../components/ParallaxFooter";
 import Model from "../../components/Model";
+import ParallaxPage from '../../components/ParallaxPage';
+import OneLineTitlePage from '../../components/OneLineTitlePage';
+import ProjectShowcase from "../../components/ProjectShowcase";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 
 function HomePage({ scrollY }) {
+  const [headerVisible, setHeaderVisible] = useState(false);
+
+  useEffect(() => {
+    return scrollY.on("change", (latest) => {
+      const videoSectionHeight = window.innerHeight * 0.95;
+      setHeaderVisible(latest > videoSectionHeight);
+    });
+  }, [scrollY]);
+
   return (
     <section>
-      <Parallex scrollY={scrollY} />
-      <Model scrollY={scrollY} />
-      <div className="h-80 place-content-center">
-        <h1 className="place-self-center text-3xl font-bold underline">
-          Hello world!
-        </h1>
-      </div>
+      <Header isVisible={headerVisible} />
+      <OpeningVideo />
+      {/* <ParallaxPage scrollY={scrollY} /> */}
+      {/* <Model scrollY={scrollY} /> */} 
+      <OneLineTitlePage scrollY={scrollY} />
+      <ProjectShowcase scrollY={scrollY} />
+      {/* <Footer /> */}
+      <ParallaxFooter scrollY={scrollY} />
     </section>
   );
 }
