@@ -1,12 +1,37 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import styles from './ProjectHeader.module.css';
+import { useScrollValue } from '../../contexts/ScrollContext';
 
-function ProjectHeader({ isVisible = true }) {
+function ProjectHeader() {
     const navigate = useNavigate();
     const [isHovered, setIsHovered] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
+    const scrollY = useScrollValue();
+
+    useEffect(() => {
+        return scrollY.on("change", (latest) => {
+            const previous = scrollY.getPrevious();
+            const isScrollingUp = latest < previous;
+            
+            // Calculate max scroll distance (compatible with Locomotive Scroll)
+            const scrollContainer = document.querySelector('[data-scroll-container]');
+            const maxScroll = scrollContainer 
+                ? scrollContainer.scrollHeight - window.innerHeight 
+                : document.documentElement.scrollHeight - window.innerHeight;
+                
+            const isAtBottom = latest >= maxScroll - 50;
+
+            // Show when at the top, scrolling up, or at the bottom
+            if (latest < 50 || isScrollingUp || isAtBottom) {
+                setIsVisible(true);
+            } else {
+                setIsVisible(false);
+            }
+        });
+    }, [scrollY]);
 
     const handleBackClick = () => {
         navigate('/', { state: { target: 'project-showcase' } });
