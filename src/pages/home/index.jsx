@@ -7,8 +7,10 @@ import OneLineTitlePage from '../../components/OneLineTitlePage';
 import ProjectShowcase from "../../components/ProjectShowcase";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import { useScrollValue } from '../../contexts/ScrollContext';
 
-function HomePage({ scrollY }) {
+function HomePage() {
+  const scrollY = useScrollValue();
   const [headerVisible, setHeaderVisible] = useState(false);
 
   useEffect(() => {
@@ -22,12 +24,12 @@ function HomePage({ scrollY }) {
     <section>
       <Header isVisible={headerVisible} />
       <OpeningVideo />
-      {/* <ParallaxPage scrollY={scrollY} /> */}
-      {/* <Model scrollY={scrollY} /> */} 
-      <OneLineTitlePage scrollY={scrollY} />
-      <ProjectShowcase scrollY={scrollY} />
+      {/* <ParallaxPage /> */}
+      {/* <Model /> */} 
+      <OneLineTitlePage />
+      <ProjectShowcase />
       {/* <Footer /> */}
-      <ParallaxFooter scrollY={scrollY} />
+      <ParallaxFooter />
     </section>
   );
 }

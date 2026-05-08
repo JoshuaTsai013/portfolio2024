@@ -3,8 +3,10 @@ import { createPortal } from "react-dom";
 import useWindowDimensions from "../Hooks/useWindowDimensions";
 import { motion, useTransform } from "motion/react";
 import ScrollTypewriterText from "../ScrollTypewriterText";
+import { useScrollValue } from '../../contexts/ScrollContext';
 
-function OneLineTitlePage({ scrollY }) {
+function OneLineTitlePage() {
+    const scrollY = useScrollValue();
     const { height } = useWindowDimensions();
     const sectionRef = useRef(null);
     const [sectionOffset, setSectionOffset] = useState(0);

@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useMotionValueEvent } from 'motion/react';
+import { useScrollValue } from '../../contexts/ScrollContext';
 import '@google/model-viewer';
 
-const ScrollModelViewer = ({ scrollY, rotationSpeed, modelSrc}) => {
+const ScrollModelViewer = ({ rotationSpeed, modelSrc}) => {
+    const scrollY = useScrollValue();
     const modelRef = useRef(null);
     const [currentScrollY, setCurrentScrollY] = useState(0);
 

@@ -2,8 +2,10 @@ import { useRef, useEffect, useState } from "react";
 import useWindowDimensions from "../Hooks/useWindowDimensions";
 import { motion, useTransform, useTime, useSpring } from "motion/react";
 import styles from './parallaxFooter.module.css';
+import { useScrollValue } from '../../contexts/ScrollContext';
 
-function ParallaxFooter({ scrollY }) {
+function ParallaxFooter() {
+  const scrollY = useScrollValue();
 
   const { height, width } = useWindowDimensions();
   const isMobile = width < 768;

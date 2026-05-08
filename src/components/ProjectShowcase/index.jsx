@@ -70,7 +70,7 @@ function makeExpandProps(rect) {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-function ProjectShowcase({ scrollY }) {
+function ProjectShowcase() {
     const navigate = useNavigate();
     const [expandingProject, setExpandingProject] = useState(null);
 
@@ -105,7 +105,6 @@ function ProjectShowcase({ scrollY }) {
                 <ShowcaseRow
                     key={i}
                     projects={rowProjects}
-                    scrollY={scrollY}
                     onNavigate={handleProjectClick}
                 />
             ))}

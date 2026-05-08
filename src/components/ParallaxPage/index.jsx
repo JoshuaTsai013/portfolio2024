@@ -1,9 +1,11 @@
 import { useRef, useEffect, useState } from "react";
 import useWindowDimensions from "../Hooks/useWindowDimensions";
 import { motion, useMotionValueEvent, useTransform, useTime } from "motion/react";
+import { useScrollValue } from '../../contexts/ScrollContext';
 // import styles from './ParallaxPage.module.css';
 
-function ParallaxPage({ scrollY }) {
+function ParallaxPage() {
+  const scrollY = useScrollValue();
 
   const { height, width } = useWindowDimensions();
   const isMobile = width < 768;

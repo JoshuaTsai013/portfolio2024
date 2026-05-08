@@ -1,12 +1,12 @@
 import { motion } from "motion/react"
 import { motionConfig } from "../../../motion.config";
 import ScrollModelViewer from "../ScrollModelViewer";
-function Model({ scrollY }) {
+function Model() {
     return (
         <div style={{ height: "1800px" }} className="place-items-center bg-zinc-700  p-40" data-scroll-section>
             <h1>Model Page</h1>
             <h2>Model</h2>
-            <ScrollModelViewer scrollY={scrollY} rotationSpeed={0.3} modelSrc="/mech.glb" />
+            <ScrollModelViewer rotationSpeed={0.3} modelSrc="/mech.glb" />
             <p>
                 This is the model page. It is a placeholder for the model page.
             </p>

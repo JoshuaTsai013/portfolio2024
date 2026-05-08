@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import styles from './project.module.css';
 import ProjectHeader from '../../components/ProjectHeader';
+import { useScrollValue } from '../../contexts/ScrollContext';
 
-function Project2({ scrollY }) {
+function Project2() {
+    const scrollY = useScrollValue();
     const [headerVisible, setHeaderVisible] = useState(false);
 
     useEffect(() => {

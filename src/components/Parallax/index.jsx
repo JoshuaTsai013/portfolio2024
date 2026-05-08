@@ -1,7 +1,9 @@
 import useWindowDimensions from "../Hooks/useWindowDimensions";
 import { motion, useTransform } from "motion/react";
+import { useScrollValue } from '../../contexts/ScrollContext';
 
-function Parallex({ scrollY }) {
+function Parallex() {
+  const scrollY = useScrollValue();
 
   const { height, width } = useWindowDimensions();
   const isMobile = width < 768;

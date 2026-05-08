@@ -4,8 +4,10 @@ import useWindowDimensions from "../Hooks/useWindowDimensions";
 import { motion, useMotionValueEvent, useTransform, useSpring } from "motion/react";
 import TypewriterText from "../TypewriterText";
 import ScrollTypewriterText from "../ScrollTypewriterText";
+import { useScrollValue } from '../../contexts/ScrollContext';
 
-function StickPageTest({ scrollY }) {
+function StickPageTest() {
+  const scrollY = useScrollValue();
 
   const { height, width } = useWindowDimensions();
   const isMobile = width < 768;

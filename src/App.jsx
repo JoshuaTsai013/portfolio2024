@@ -9,6 +9,7 @@ import Project1 from './pages/project1';
 import Project2 from './pages/project2';
 import Project3 from './pages/project3';
 import LoadingScreen from './components/LoadingScreen';
+import { ScrollProvider } from './contexts/ScrollContext';
 
 function App() {
   const scrollY = useMotionValue(0);
@@ -32,16 +33,18 @@ function App() {
 
       {!isLoading && (
         <SmoothScroll setScrollY={handleScrollY}>
-          <Routes>
-            <Route path="/" element={<HomePage scrollY={scrollY} />} />
-            <Route path="/project/1" element={<Project1 scrollY={scrollY} />} />
-            <Route path="/project/2" element={<Project2 scrollY={scrollY} />} />
-            <Route path="/project/3" element={<Project3 scrollY={scrollY} />} />
-            <Route path="/AboutUs" element={<div>About Us Page</div>} />
-            <Route path="/Music" element={<div>Music Page</div>} />
-            <Route path="/Model" element={<div>3D Model Page</div>} />
-            <Route path="/Sign" element={<div>Sign Up/In Page</div>} />
-          </Routes>
+          <ScrollProvider scrollY={scrollY}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/project/1" element={<Project1 />} />
+              <Route path="/project/2" element={<Project2 />} />
+              <Route path="/project/3" element={<Project3 />} />
+              <Route path="/AboutUs" element={<div>About Us Page</div>} />
+              <Route path="/Music" element={<div>Music Page</div>} />
+              <Route path="/Model" element={<div>3D Model Page</div>} />
+              <Route path="/Sign" element={<div>Sign Up/In Page</div>} />
+            </Routes>
+          </ScrollProvider>
         </SmoothScroll>
       )}
     </>

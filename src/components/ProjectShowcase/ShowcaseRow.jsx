@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion, useTransform } from 'motion/react';
 import useWindowDimensions from '../Hooks/useWindowDimensions';
 import styles from './ProjectShowcase.module.css';
+import { useScrollValue } from '../../contexts/ScrollContext';
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
@@ -44,7 +45,8 @@ function forwardWheel(e) {
  *   scrollY    — MotionValue from App (updated by Locomotive Scroll)
  *   onNavigate — (e, project) => void  called when a card is clicked
  */
-function ShowcaseRow({ projects, scrollY, onNavigate }) {
+function ShowcaseRow({ projects, onNavigate }) {
+    const scrollY = useScrollValue();
     const sectionRef = useRef(null);
     const [sectionOffset, setSectionOffset] = useState(0);
     const [sectionHeight, setSectionHeight] = useState(1);
