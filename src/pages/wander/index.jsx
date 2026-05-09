@@ -2,6 +2,21 @@ import { motion } from 'motion/react';
 import styles from './project.module.css';
 import ProjectHeader from '../../components/ProjectHeader';
 
+const SectionDivider = () => (
+    <svg
+        width="95%" height="20" viewBox="0 0 1000 20" fill="none"
+        style={{ display: 'block', marginBottom: '1.5rem', marginTop: '0.2rem', maxWidth: '900px', opacity: 0.6 }}
+    >
+        <motion.path
+            d="M 5 10 Q 250 0, 500 10 T 995 10"
+            stroke="#8FB591" strokeWidth="3" strokeDasharray="10 10" strokeLinecap="round" fill="transparent"
+            initial={{ clipPath: "inset(0% 100% 0% 0%)" }}
+            animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+        />
+    </svg>
+);
+
 function WanderApp() {
     return (
         <section className={styles.projectPage}>
@@ -41,22 +56,7 @@ function WanderApp() {
             <div className={styles.content}>
 
                 {/* --- Animated Decorative Background Elements --- */}
-                {/* 1. Dotted Map Path (Animated SVG) */}
-                <motion.svg
-                    className={styles.decorPath1}
-                    width="200" height="400" viewBox="0 0 200 400" fill="none"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    whileInView={{ pathLength: 1, opacity: 0.6 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 2.5, ease: "easeInOut" }}
-                >
-                    <motion.path
-                        d="M 50 0 C 150 100, -50 250, 150 400"
-                        stroke="#8FB591" strokeWidth="3" strokeDasharray="8 8" strokeLinecap="round" fill="transparent"
-                    />
-                </motion.svg>
-
-                {/* 2. Floating Plane/Ticket */}
+                {/* 1. Floating Plane/Ticket */}
                 <motion.div
                     className={styles.decorPlane}
                     animate={{ y: [0, -15, 0], rotate: [0, 4, 0] }}
@@ -67,7 +67,7 @@ function WanderApp() {
                     </div>
                 </motion.div>
 
-                {/* 3. Floating Stamp/Compass */}
+                {/* 2. Floating Stamp/Compass */}
                 <motion.div
                     className={styles.decorStamp}
                     animate={{ y: [0, 10, 0], rotate: [-5, -2, -5] }}
@@ -78,7 +78,7 @@ function WanderApp() {
                     </div>
                 </motion.div>
 
-                {/* 4. Floating Leaf/Nature */}
+                {/* 3. Floating Leaf/Nature */}
                 <motion.div
                     className={styles.decorLeaf}
                     animate={{ y: [0, -20, 0], x: [0, 10, 0], rotate: [0, -8, 0] }}
@@ -100,6 +100,7 @@ function WanderApp() {
                         transition={{ duration: 0.6 }}
                     >
                         <h2 className={styles.sectionTitle}>Project Overview</h2>
+                        <SectionDivider />
                         <div className={`${styles.scrapbookCard} ${styles.rotate1}`}>
                             <div className={styles.tape}></div>
                             <p className={styles.text}>
@@ -116,7 +117,8 @@ function WanderApp() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className={styles.sectionTitle}>Technologies Used <span style={{display: 'inline-block', transform: 'rotate(12deg)', opacity: 0.6, fontSize: '0.8em', marginLeft: '8px'}}>💻</span></h2>
+                        <h2 className={styles.sectionTitle}>Technologies Used <span style={{ display: 'inline-block', transform: 'rotate(12deg)', opacity: 0.6, fontSize: '0.8em', marginLeft: '8px' }}>💻</span></h2>
+                        <SectionDivider />
                         <div className={styles.techGrid}>
                             {['React Native', 'Figma', 'Google Map API', 'Async Storage'].map((tech) => (
                                 <div key={tech} className={styles.techBadge}>
@@ -135,6 +137,7 @@ function WanderApp() {
                         transition={{ duration: 0.6 }}
                     >
                         <h2 className={styles.sectionTitle}>Key Features</h2>
+                        <SectionDivider />
                         <ul className={styles.featureList}>
                             <li>
                                 <span className={`${styles.featureIcon} ${styles.featureIcon1}`}>📸</span>
@@ -160,16 +163,45 @@ function WanderApp() {
                         transition={{ duration: 0.6 }}
                     >
                         <h2 className={styles.sectionTitle}>Design Layout</h2>
+                        <SectionDivider />
                         <div className={styles.photoLayout}>
                             <div className={styles.leftColumn}>
-                                <img src="/WanderPhotos/Intro.png" alt="Wander App Intro" />
-                                <img src="/WanderPhotos/Guide.png" alt="Wander App Guide" />
+                                <div className={`${styles.imgScrapbook1}`}>
+                                    <div className={styles.tape} style={{ top: '-10px', left: '15%' }}></div>
+                                    <img src="/WanderPhotos/Intro.png" alt="Wander App Intro" />
+                                </div>
+                                <div className={`${styles.imgScrapbook2}`}>
+                                    <div className={styles.tape} style={{ top: '-12px', right: '20%', left: 'auto' }}></div>
+                                    <img src="/WanderPhotos/Guide.png" alt="Wander App Guide" />
+                                </div>
                             </div>
                             <div className={styles.rightColumn}>
-                                <img src="/WanderPhotos/Wireframe.png" alt="Wander App Wireframe" />
-                                <img src="/WanderPhotos/Frame(lightMode).png" alt="Wander App Light Mode" />
-                                <img src="/WanderPhotos/Frame(DarkMode).png" alt="Wander App Dark Mode" />
-                                <iframe width="460" height="315" src="https://www.youtube.com/embed/YmzM2_J9VbI?si=okDJOuRvd-INY-0x" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                <div className={`${styles.imgScrapbook3}`}>
+                                    <div className={styles.tape} style={{ top: '-8px', left: '40%' }}></div>
+                                    <img src="/WanderPhotos/Wireframe.png" alt="Wander App Wireframe" />
+                                </div>
+                                <div className={`${styles.imgScrapbook1}`}>
+                                    <div className={styles.tape} style={{ top: '-10px', right: '15%', left: 'auto' }}></div>
+                                    <img src="/WanderPhotos/Frame(lightMode).png" alt="Wander App Light Mode" />
+                                </div>
+                                <div className={`${styles.imgScrapbook2}`}>
+                                    <div className={styles.tape} style={{ top: '-12px', left: '25%' }}></div>
+                                    <img src="/WanderPhotos/Frame(DarkMode).png" alt="Wander App Dark Mode" />
+                                </div>
+                                {/* YouTube Video */}
+                                <div className={`${styles.imgScrapbook3}`}>
+                                    <div className={styles.tape} style={{ top: '-12px', left: '50%', transform: 'translateX(-50%)' }}></div>
+                                    <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', borderRadius: '4px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)', zIndex: 11 }}>
+                                        <iframe
+                                            style={{ width: '100%', height: '100%', border: 0 }}
+                                            src="https://www.youtube.com/embed/YmzM2_J9VbI?si=0M7-VBxwQg7qHi9X"
+                                            title="YouTube video player"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            referrerPolicy="strict-origin-when-cross-origin"
+                                            allowFullScreen
+                                        ></iframe>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </motion.div>
