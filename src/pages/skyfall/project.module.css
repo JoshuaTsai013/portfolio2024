@@ -1,0 +1,529 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+/* ─── CSS Variables ─────────────────────────────────────── */
+:root {
+  --color-background:               #171305;
+  --color-surface:                  #171305;
+  --color-surface-container-lowest: #120e03;
+  --color-surface-container:        #241f10;
+  --color-surface-container-high:   #2f2a19;
+  --color-primary:                  #f1bf5f;
+  --color-primary-fixed:            #ffdea7;
+  --color-on-background:            #ece2c9;
+  --color-on-surface:               #ece2c9;
+  --color-on-surface-variant:       #d2c5b1;
+  --color-outline:                  #9b8f7d;
+  --color-outline-variant:          #4f4537;
+}
+
+/* ─── Gear Icon Utility (Material Symbols) ──────────────── */
+.gearIcon {
+  font-family: 'Material Symbols Outlined';
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* ─── Animations ─────────────────────────────────────────── */
+@keyframes gearCW {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes gearCCW {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+.animGearCW  { animation: gearCW  20s linear infinite; }
+.animGearCCW { animation: gearCCW 15s linear infinite; }
+
+/* ─── Large bg gear decoration (Global Background) ─────── */
+.BgGear {
+  position: fixed; 
+  top: 48%;
+  left: 50%;
+  
+  opacity: 0.03;
+  font-size: 600px;
+
+  pointer-events: none;
+  user-select: none;
+  color: var(--color-primary);
+  z-index: 0;
+}
+
+/* ─── Page Shell ────────────────────────────────── */
+.projectPage {
+  font-family: "Cormorant Garamond", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  overflow-x: hidden;
+}
+
+/* ─── Hero ───────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 4rem;
+  border-bottom: 8px solid var(--color-surface-container-lowest);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(23, 19, 5, 0.6) 0%,
+    rgba(23, 19, 5, 0.95) 100%
+  );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroTitle {
+  font-size: clamp(3.5rem, 8vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--color-primary-fixed);
+  text-shadow: 0 4px 12px rgba(241, 191, 95, 0.3);
+  margin: 0 0 0.5rem 0;
+}
+
+.heroSubtitle {
+  font-family: 'Courier Prime', monospace;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
+  border-top: 1px solid var(--color-outline-variant);
+  border-bottom: 1px solid var(--color-outline-variant);
+  padding: 0.5rem 3rem;
+  margin: 0;
+}
+
+/* ─── Content Area ───────────────────────────────────────── */
+.content {
+  background: transparent;
+  padding: 3rem 0;
+}
+
+.container {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ─── Bento Grid ─────────────────────────────────────────── */
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* ─── Panels (shared) ────────────────────────────────────── */
+.panel {
+  position: relative;
+  padding: 2rem;
+}
+
+.panelOverview {
+  grid-column: span 8;
+  background-color: var(--color-surface-container-high);
+  border: 2px solid var(--color-outline);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.panelTech {
+  grid-column: span 4;
+  background-color: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline-variant);
+  display: flex;
+  flex-direction: column;
+}
+
+.panelFeatures {
+  grid-column: span 12;
+  background-color: var(--color-surface-container);
+  border: 1px solid var(--color-outline);
+  margin-top: 0.5rem;
+}
+
+/* ─── Panel Rivets ───────────────────────────────────────── */
+.rivetTL, .rivetTR, .rivetBL, .rivetBR {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--color-surface-container-lowest);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    0 1px 1px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rivetTL { top: 0.7rem; left: 0.7rem; }
+.rivetTR { top: 0.7rem; right: 0.7rem; }
+.rivetBL { bottom: 0.7rem; left: 0.7rem; }
+.rivetBR { bottom: 0.7rem; right: 0.7rem; }
+
+.rivetDot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-outline);
+  border-radius: 50%;
+}
+
+/* ─── Gear Rivets (small spinning gears at corners) ──────── */
+.gearRivet {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--color-primary);
+  user-select: none;
+}
+.gearRivetTL { top: 0; left: 0; }
+.gearRivetTR { top: 0; right: 0; }
+.gearRivetBL { bottom: 0; left: 0; }
+.gearRivetBR { bottom: 0; right: 0;}
+
+/* ─── Section Titles ─────────────────────────────────────── */
+.panelTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.panelTitleSmall {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary-fixed);
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-outline-variant);
+}
+
+.panelTitleCenter {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: center;
+  margin: 0 0 2rem 0;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--color-outline-variant);
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.panelTitleIcon {
+  font-size: 24px;
+  color: var(--color-primary);
+}
+
+/* ─── Overview text ──────────────────────────────────────── */
+.overviewText {
+  font-family: 'Courier Prime', monospace;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--color-on-surface);
+  text-align: justify;
+}
+
+/* ─── Tech Badges ─────────────────────────────────────────── */
+.techGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0px;
+}
+
+.techBadge {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-outline);
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  font-family: serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-on-surface);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+}
+
+.techBadge:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(0px);
+}
+
+/* ─── Features List ──────────────────────────────────────── */
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.featureIcon {
+  font-family: 'Material Symbols Outlined';
+  font-size: 24px;
+  color: var(--color-primary-fixed);
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: transform 0.7s ease;
+}
+
+.featureItem:hover .featureIcon {
+  transform: rotate(90deg);
+}
+
+.featureTitle {
+  font-weight: 700;
+  color: var(--color-on-surface);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.featureDesc {
+  font-family: 'Courier Prime', monospace;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-on-surface-variant);
+}
+
+/* ─── Gear Divider ───────────────────────────────────────── */
+.gearDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0 4rem;
+  opacity: 0.4;
+}
+
+.gearDividerLine {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to right, transparent, var(--color-outline-variant));
+}
+
+.gearDividerLineRight {
+  height: 1px;
+  flex: 5;
+  background: linear-gradient(to left, transparent, var(--color-outline-variant));
+}
+
+.gearDividerGear {
+  font-family: 'Material Symbols Outlined';
+  font-size: 24px;
+  color: var(--color-primary);
+  user-select: none;
+}
+
+.gearDividerGearLg {
+  font-family: 'Material Symbols Outlined';
+  font-size: 28px;
+  color: var(--color-primary-fixed);
+  user-select: none;
+}
+
+/* ─── Gallery ─────────────────────────────────────────────── */
+.galleryTitle {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: center;
+  margin: 0 0 4rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.galleryCard {
+  position: relative;
+  background-color: var(--color-surface-container-lowest);
+  padding: 0.75rem;
+  border: 2px solid var(--color-outline);
+
+  box-shadow: 
+    0 8px 16px rgba(0, 0, 0, 0.6),
+    0 0 8px rgba(241, 191, 95, 0.4),
+    inset 0 0 8px rgba(241, 191, 95, 0.2);
+  overflow: hidden;
+  transition: box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+.galleryCard:hover {
+  border-color: var(--color-primary-fixed);
+  
+  box-shadow: 
+    0 8px 16px rgba(0, 0, 0, 0.6),
+    0 0 16px rgba(255, 222, 167, 0.8),
+}
+
+.galleryCard img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.5s ease;
+}
+
+
+/* Brass corners */
+.brassTL, .brassTR, .brassBL, .brassBR {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  z-index: 10;
+  
+  filter: drop-shadow(0 0 4px var(--color-primary));
+  transition: filter 0.5s ease, border-color 0.5s ease;
+}
+
+.galleryCard:hover .brassTL,
+.galleryCard:hover .brassTR,
+.galleryCard:hover .brassBL,
+.galleryCard:hover .brassBR {
+  filter: drop-shadow(0 8px 8px var(--color-primary-fixed));
+}
+
+.brassTL { top: 1px;    left: 1px;   border-top: 1px solid var(--color-primary); border-left:  1px solid var(--color-primary); }
+.brassTR { top: 1px;    right: 1px;  border-top: 1px solid var(--color-primary); border-right: 1px solid var(--color-primary); }
+.brassBL { bottom: 1px; left: 1px;   border-bottom: 1px solid var(--color-primary); border-left:  1px solid var(--color-primary); }
+.brassBR { bottom: 1px; right: 1px;  border-bottom: 1px solid var(--color-primary); border-right: 1px solid var(--color-primary); }
+
+/* ─── simple footer ───────────────────── */
+.footer {
+  width: 100%;
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 1px solid var(--color-outline-variant);
+}
+
+.footer a {
+  display: inline-block;
+  color: var(--color-on-surface-variant);
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* ─── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .panelOverview { grid-column: span 12; }
+  .panelTech     { grid-column: span 12; }
+  .panelFeatures { grid-column: span 12; }
+
+  .featureGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 50vh;
+    padding: 6rem 1.5rem 4rem;
+  }
+
+  .content {
+    padding: 4rem 0 2rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .panelTitle { font-size: 1.5rem; }
+  .panelTitleCenter { margin-left: 1rem; margin-right: 1rem; }
+
+  .photoGrid {
+    grid-template-columns: 1fr;
+  }
+
+}

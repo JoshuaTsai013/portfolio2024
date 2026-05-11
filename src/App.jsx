@@ -9,6 +9,7 @@ import Project1 from './pages/project1';
 import Project2 from './pages/project2';
 import Project3 from './pages/project3';
 import WanderApp from './pages/wander';
+import Skyfall from './pages/skyfall';
 import LoadingScreen from './components/LoadingScreen';
 import { ScrollProvider } from './contexts/ScrollContext';
 
@@ -41,6 +42,7 @@ function App() {
               <Route path="/project/2" element={<Project2 />} />
               <Route path="/project/3" element={<Project3 />} />
               <Route path="/project/wander" element={<WanderApp />} />
+              <Route path="/project/skyfall" element={<Skyfall />} />
               <Route path="/AboutUs" element={<div>About Us Page</div>} />
               <Route path="/Music" element={<div>Music Page</div>} />
               <Route path="/Model" element={<div>3D Model Page</div>} />
