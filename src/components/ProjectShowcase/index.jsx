@@ -10,17 +10,17 @@ import ShowcaseRow from './ShowcaseRow';
 const PROJECTS = [
     {
         id: 1,
-        title: 'Project1',
+        title: 'skyfall',
         description: 'This is a description for Project 1',
         image: '/ProjectCover1.png',
-        path: '/project/1',
+        path: '/project/skyfall',
     },
     {
         id: 2,
-        title: 'Project2',
+        title: 'wander',
         description: 'This is a description for Project 2',
-        image: '/ProjectCover2.png',
-        path: '/project/2',
+        image: '/ProjectCover3.png',
+        path: '/project/wander',
     },
     {
         id: 3,

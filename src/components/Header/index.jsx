@@ -45,10 +45,10 @@ function Header({ isVisible = true }) {
   };
 
   const navLinks = [
-    { name: "HOME", path: "/" },
-    { name: "ABOUT US", path: "/project/1" },
-    { name: "MUSIC", path: "/project/2" },
-    { name: "3D MODEL", path: "/project/3" },
+    { name: "Home", path: "/" },
+    { name: "Skyfall", path: "/project/skyfall" },
+    { name: "Wander", path: "/project/wander" },
+    { name: "Project 3", path: "/project/3" },
   ];
 
   return (
@@ -60,7 +60,7 @@ function Header({ isVisible = true }) {
     >
       {/* Logo or Brand Name could go here */}
       <div className="text-white font-bold text-xl z-50">
-        <h2>NINI</h2>
+        <h2>I'm Joshua</h2>
         {/* Placeholder for Logo if needed, or just keep empty for now as per original */}
       </div>
 

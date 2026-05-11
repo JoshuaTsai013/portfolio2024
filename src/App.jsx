@@ -43,10 +43,6 @@ function App() {
               <Route path="/project/3" element={<Project3 />} />
               <Route path="/project/wander" element={<WanderApp />} />
               <Route path="/project/skyfall" element={<Skyfall />} />
-              <Route path="/AboutUs" element={<div>About Us Page</div>} />
-              <Route path="/Music" element={<div>Music Page</div>} />
-              <Route path="/Model" element={<div>3D Model Page</div>} />
-              <Route path="/Sign" element={<div>Sign Up/In Page</div>} />
             </Routes>
           </ScrollProvider>
         </SmoothScroll>
