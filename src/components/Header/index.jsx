@@ -48,7 +48,7 @@ function Header({ isVisible = true }) {
     { name: "Home", path: "/" },
     { name: "Skyfall", path: "/project/skyfall" },
     { name: "Wander", path: "/project/wander" },
-    { name: "Project 3", path: "/project/3" },
+    { name: "guitar-love", path: "/project/guitar-love" },
   ];
 
   return (

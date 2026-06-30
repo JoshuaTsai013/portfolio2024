@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600&display=swap');
+
+/* ─── CSS Variables ─────────────────────────────────────── */
+:root {
+  --gl-bg: #0e0c0a;
+  --gl-surface: #1a1714;
+  --gl-surface-high: #252119;
+  --gl-primary: #d4a053;
+  --gl-primary-light: #f0cc8a;
+  --gl-accent: #c27834;
+  --gl-text: #e8dfd4;
+  --gl-text-muted: #a89b8a;
+  --gl-border: #3a3228;
+  --gl-border-light: #5a4e40;
+}
+
+/* ─── Page Shell ────────────────────────────────── */
+.projectPage {
+  position: relative;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--gl-bg);
+  color: var(--gl-text);
+  overflow-x: hidden;
+}
+
+/* ─── MotionGrid Background Layer ────────────────────────── */
+.gridBackground {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.gridBackground canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: auto;
+}
+
+/* ─── Hero ───────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Gradient overlay on hero */
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(14, 12, 10, 1) 0%,
+    rgba(14, 12, 10, 0.1) 100%
+  );
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.heroTitle {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.1;
+  color: var(--gl-primary-light);
+  text-shadow: 0 4px 20px rgba(212, 160, 83, 0.3);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.heroSubtitle {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gl-text-muted);
+  margin: 0;
+  padding: 0.6rem 2.5rem;
+  border-top: 1px solid var(--gl-border);
+  border-bottom: 1px solid var(--gl-border);
+}
+
+/* Decorative string lines under hero */
+.heroStrings {
+  display: flex;
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+
+.heroString {
+  width: 1px;
+  height: 140px;
+  background: linear-gradient(
+    to bottom,
+    var(--gl-primary),
+    transparent
+  );
+  opacity: 0.5;
+}
+
+.heroString:nth-child(2) { height: 152px; opacity: 0.4; }
+.heroString:nth-child(3) { height: 160px; opacity: 0.6; }
+.heroString:nth-child(4) { height: 148px; opacity: 0.35; }
+.heroString:nth-child(5) { height: 156px; opacity: 0.45; }
+.heroString:nth-child(6) { height: 144px; opacity: 0.5; }
+
+/* ─── Content Area ───────────────────────────────────────── */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 0 3rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ─── Intro Quote ─────────────────────────────────────────── */
+.introQuote {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 1rem;
+  padding: 2rem;
+  position: relative;
+}
+
+.introQuote::before,
+.introQuote::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--gl-primary),
+    transparent
+  );
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.introQuote::before { top: 0; }
+.introQuote::after { bottom: 0; }
+
+.quoteText {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(0.8rem, 3vw, 1.2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--gl-text);
+  margin: 0 0 3rem;
+}
+
+.quoteIcon {
+  font-size: 2rem;
+  color: var(--gl-primary);
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* ─── Story Section (Image + Text pair) ──────────────────── */
+.storySection {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  margin-bottom: 6rem;
+}
+
+.storySection.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Image side */
+.storyImageWrap {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.storyImageFrame {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background-color: var(--gl-surface);
+  border: 1px solid var(--gl-border);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(212, 160, 83, 0.08);
+  transition: box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+.storyImageFrame:hover {
+  border-color: var(--gl-border-light);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(212, 160, 83, 0.1);
+}
+
+.storyImageFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder for missing images */
+.imagePlaceholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--gl-text-muted);
+  font-size: 0.85rem;
+  background: linear-gradient(
+    135deg,
+    var(--gl-surface) 0%,
+    var(--gl-surface-high) 100%
+  );
+}
+
+.placeholderIcon {
+  font-size: 2.5rem;
+  opacity: 0.3;
+}
+
+/* Decorative corner accents on image */
+.cornerTL,
+.cornerBR {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  opacity: 0.6;
+  transition: opacity 0.4s ease;
+}
+
+.storyImageFrame:hover .cornerTL,
+.storyImageFrame:hover .cornerBR {
+  opacity: 1;
+}
+
+.cornerTL {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--gl-primary);
+  border-left: 2px solid var(--gl-primary);
+}
+
+.cornerBR {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--gl-primary);
+  border-right: 2px solid var(--gl-primary);
+}
+
+/* Text side */
+.storyTextWrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.storyIndex {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--gl-primary);
+  opacity: 0.15;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.storyTitle {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--gl-primary-light);
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+.storyText {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--gl-text-muted);
+  margin: 0;
+}
+
+/* ─── Section Divider ────────────────────────────────────── */
+.sectionDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 3rem 0 5rem;
+  opacity: 0.3;
+}
+
+.dividerLine {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to right, transparent, var(--gl-border-light));
+}
+
+.dividerLineRight {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to left, transparent, var(--gl-border-light));
+}
+
+.dividerDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--gl-primary);
+}
+
+/* ─── Footer ─────────────────────────────────────────────── */
+.footer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 3rem 0;
+  text-align: center;
+  border-top: 1px solid var(--gl-border);
+}
+
+.footerText {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--gl-text-muted);
+  margin: 0;
+}
+
+/* ─── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .storySection,
+  .storySection.reverse {
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .storyImageWrap,
+  .storyTextWrap {
+    width: 100%;
+  }
+
+  .storyIndex {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 300px;
+    height: 40vh;
+  }
+
+  .content {
+    padding: 3rem 0 2rem;
+  }
+
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  .introQuote {
+    margin-bottom: 3rem;
+    padding: 1.5rem 0.5rem;
+  }
+
+  .storySection,
+  .storySection.reverse {
+    margin-bottom: 3rem;
+    gap: 1.5rem;
+  }
+}
