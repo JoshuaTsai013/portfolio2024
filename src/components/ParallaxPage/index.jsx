@@ -87,7 +87,7 @@ function ParallaxPage() {
             transformOrigin: "bottom" 
           }}
           className="h-60 md:h-80 absolute m-auto left-0 right-0 bottom-1/2"
-          src="ParallexImages/sunSize.png"
+          src="ParallexImages/sunSize.webp"
           alt="sunSize"
         /> */}
         {/* <motion.div style={{ y: moveBrandY, transformOrigin: "bottom" }} className={styles.brandContainer}>

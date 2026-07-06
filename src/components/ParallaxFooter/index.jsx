@@ -111,7 +111,7 @@ function ParallaxFooter() {
         <motion.img
           style={{ transformOrigin: "top" }}
           className={`absolute m-auto left-0 right-0 top-0 ${isMobile ? 'h-[100vh]' : 'h-[160vh]'}`}
-          src="ParallexImages/backgroundUpLineSize.png"
+          src="ParallexImages/backgroundUpLineSize.webp"
           alt="backgroundUpLineSize"
         />
         <motion.img
@@ -121,13 +121,13 @@ function ParallaxFooter() {
             transformOrigin: "bottom" 
           }}
           className="h-60 md:h-80 absolute m-auto left-0 right-0 bottom-1/2"
-          src="ParallexImages/sunSize.png"
+          src="ParallexImages/sunSize.webp"
           alt="sunSize"
         />
         {/* <motion.img
           style={{ y: moveSmallY }}
           className="h-12 md:h-20 absolute m-auto left-20 top-24"
-          src="ParallexImages/welcome2.png"
+          src="ParallexImages/welcome2.webp"
           alt="welcome2"
         /> */}
         <motion.div style={{ y: moveBrandY, transformOrigin: "bottom" }} className={styles.brandContainer}>
@@ -155,13 +155,13 @@ function ParallaxFooter() {
         <motion.img
           style={{ y: moveBottom, scaleY: scaleBottomY, scaleX: scaleBottomX, transformOrigin: "bottom" }}
           className={`absolute m-auto left-0 right-0 bottom-0 object-fill overflow-hidden ${isMobile ? 'h-[40vh]' : 'h-[50vh]'} w-screen`}
-          src="ParallexImages/backgroundDownSize.png"
+          src="ParallexImages/backgroundDownSize.webp"
           alt="backgroundDownSize"
         />
         <motion.img
           style={{ y: moveBottom, scaleY: scaleBottomY, scaleX: scaleBottomX, opacity: gridOpacity, transformOrigin: "bottom" }}
           className={`absolute m-auto left-0 right-0 bottom-0 object-fill overflow-hidden ${isMobile ? 'h-[40vh]' : 'h-[50vh]'} w-screen`}
-          src="ParallexImages/gridLineSize.png"
+          src="ParallexImages/gridLineSize.webp"
           alt="gridLineSize"
         />
       </motion.div>

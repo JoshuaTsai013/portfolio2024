@@ -29,7 +29,7 @@ function WanderApp() {
                 transition={{ duration: 1 }}
             >
                 <div className={styles.heroImage}>
-                    {/* <img src="/project1_cover.png" alt="Wander App" />
+                    {/* <img src="/project1_cover.webp" alt="Wander App" />
                     <div className={styles.heroOverlay}></div> */}
                 </div>
                 <div className={styles.heroContent}>
@@ -168,25 +168,25 @@ function WanderApp() {
                             <div className={styles.leftColumn}>
                                 <div className={`${styles.imgScrapbook1}`}>
                                     <div className={styles.tape} style={{ top: '-10px', left: '15%' }}></div>
-                                    <img src="/WanderPhotos/Intro.png" alt="Wander App Intro" />
+                                    <img src="/WanderPhotos/Intro.webp" alt="Wander App Intro" />
                                 </div>
                                 <div className={`${styles.imgScrapbook2}`}>
                                     <div className={styles.tape} style={{ top: '-12px', right: '20%', left: 'auto' }}></div>
-                                    <img src="/WanderPhotos/Guide.png" alt="Wander App Guide" />
+                                    <img src="/WanderPhotos/Guide.webp" alt="Wander App Guide" />
                                 </div>
                             </div>
                             <div className={styles.rightColumn}>
                                 <div className={`${styles.imgScrapbook3}`}>
                                     <div className={styles.tape} style={{ top: '-8px', left: '40%' }}></div>
-                                    <img src="/WanderPhotos/Wireframe.png" alt="Wander App Wireframe" />
+                                    <img src="/WanderPhotos/Wireframe.webp" alt="Wander App Wireframe" />
                                 </div>
                                 <div className={`${styles.imgScrapbook1}`}>
                                     <div className={styles.tape} style={{ top: '-10px', right: '15%', left: 'auto' }}></div>
-                                    <img src="/WanderPhotos/Frame(lightMode).png" alt="Wander App Light Mode" />
+                                    <img src="/WanderPhotos/Frame(lightMode).webp" alt="Wander App Light Mode" />
                                 </div>
                                 <div className={`${styles.imgScrapbook2}`}>
                                     <div className={styles.tape} style={{ top: '-12px', left: '25%' }}></div>
-                                    <img src="/WanderPhotos/Frame(DarkMode).png" alt="Wander App Dark Mode" />
+                                    <img src="/WanderPhotos/Frame(DarkMode).webp" alt="Wander App Dark Mode" />
                                 </div>
                                 {/* YouTube Video */}
                                 <div className={`${styles.imgScrapbook3}`}>

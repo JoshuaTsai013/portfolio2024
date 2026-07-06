@@ -34,37 +34,37 @@ function Parallex() {
         <motion.img
           style={{ transformOrigin: "top" ,height: `${height + 400}px` }}
           className="h-screen absolute m-auto left-0 right-0 Top-0"
-          src="ParallexImages/backgroundUpLineSize.png"
+          src="ParallexImages/backgroundUpLineSize.webp"
           alt="backgroundUpLineSize"
         />
         <motion.img
           style={{ y: moveY }}
           className="h-1/3 absolute m-auto left-0 right-0 bottom-24 "
-          src="ParallexImages/sunSize.png"
+          src="ParallexImages/sunSize.webp"
           alt="sunSize"
         />
         <motion.img
           style={{ y: moveSmallY }}
           className="h-12 md:h-20 absolute m-auto left-20 bottom-24"
-          src="ParallexImages/welcome2.png"
+          src="ParallexImages/welcome2.webp"
           alt="welcome2"
         />
         <motion.img
           style={{ y: moveSmallY }}
           className="h-12 md:h-20 absolute m-auto right-20 bottom-48"
-          src="ParallexImages/welcome2.png"
+          src="ParallexImages/welcome2.webp"
           alt="welcome2"
         />
         <motion.img
           style={{ y: moveBottom, scaleY: scaleBottom, transformOrigin: "bottom" }}
           className="h-1/2 absolute m-auto left-0 right-0 -bottom-2"
-          src="ParallexImages/backgroundDownSize.png"
+          src="ParallexImages/backgroundDownSize.webp"
           alt="backgroundDownSize"
         />
         <motion.img
           style={{ y: moveBottom, scaleY: scaleBottom, transformOrigin: "bottom" }}
           className="h-1/2 absolute m-auto left-0 right-0 -bottom-2"
-          src="ParallexImages/gridLineSize.png"
+          src="ParallexImages/gridLineSize.webp"
           alt="gridLineSize"
         />
       </motion.div>

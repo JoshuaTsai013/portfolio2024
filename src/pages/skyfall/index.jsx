@@ -15,10 +15,10 @@ const FEATURES = [
 ];
 
 const GALLERY = [
-    { src: '/SkyfallPhotos/photo1.png', alt: 'SkyFALL Scene 1' },
-    { src: '/SkyfallPhotos/photo2.png', alt: 'SkyFALL Scene 2' },
-    { src: '/SkyfallPhotos/photo3.png', alt: 'SkyFALL Scene 3' },
-    { src: '/SkyfallPhotos/photo4.jpg', alt: 'SkyFALL Scene 4' },
+    { src: '/SkyfallPhotos/photo1.webp', alt: 'SkyFALL Scene 1' },
+    { src: '/SkyfallPhotos/photo2.webp', alt: 'SkyFALL Scene 2' },
+    { src: '/SkyfallPhotos/photo3.webp', alt: 'SkyFALL Scene 3' },
+    { src: '/SkyfallPhotos/photo4.webp', alt: 'SkyFALL Scene 4' },
 ];
 
 /* ─── Section animation preset ─────────────────────────────── */
@@ -76,7 +76,7 @@ function Skyfall() {
             >
                 {/* Background GIF */}
                 <div className={styles.heroImage}>
-                    <img src="/SkyfallPhotos/bg.gif" alt="Skyfall Banner" />
+                    <img src="/SkyfallPhotos/bg.webp" alt="Skyfall Banner" />
                     <div className={styles.heroOverlay} />
                 </div>
 

@@ -15,7 +15,7 @@ function Project3() {
                 transition={{ duration: 1 }}
             >
                 <div className={styles.heroImage}>
-                    <img src="/project3_cover.png" alt="3D Design Lab" />
+                    <img src="/project3_cover.webp" alt="3D Design Lab" />
                     <div className={styles.heroOverlay}></div>
                 </div>
                 <div className={styles.heroContent}>

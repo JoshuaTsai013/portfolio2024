@@ -15,7 +15,7 @@ function Project2() {
                 transition={{ duration: 1 }}
             >
                 <div className={styles.heroImage}>
-                    <img src="/project2_cover.png" alt="SoundWave Studio" />
+                    <img src="/project2_cover.webp" alt="SoundWave Studio" />
                     <div className={styles.heroOverlay}></div>
                 </div>
                 <div className={styles.heroContent}>
