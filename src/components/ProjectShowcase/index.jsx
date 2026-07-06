@@ -24,10 +24,10 @@ const PROJECTS = [
     },
     {
         id: 3,
-        title: 'Project3',
-        description: 'This is a description for Project 3',
-        image: '/ProjectCover3.webp',
-        path: '/project/3',
+        title: 'guitar love',
+        description: 'This is a description for Guitar Love',
+        image: '/ProjectCover2.webp',
+        path: '/project/guitar-love',
     },
 ];
 
