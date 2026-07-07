@@ -63,6 +63,10 @@ const SmoothScroll = ({ children, setScrollY }) => {
                 locomotiveScrollRef.current = null;
             }
         };
+        // location.state is deliberately NOT a dependency: locomotive must be
+        // destroyed/recreated only on route (pathname) change; state only carries
+        // the initial scroll target read during that rebuild.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname, setScrollY]);
 
     return (

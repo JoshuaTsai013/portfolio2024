@@ -13,6 +13,9 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react/jsx-no-target-blank': 'off',
+    // JSX-only codebase with no prop-types tradition; type annotations would be
+    // unmaintained boilerplate (decision approved 2026-07-07)
+    'react/prop-types': 'off',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
