@@ -17,7 +17,6 @@ function Parallex() {
   const localScrollY = useTransform(scrollY, (value) => Math.max(0, value - sectionOffset));
 
   // Now use localScrollY for all transforms - values work as if this section is at the top
-  const scaleY = useTransform(localScrollY, [0, 1000], isMobile ? [1, 1.7] : [1, 1.5]);
   const moveY = useTransform(localScrollY, [0, 900], isMobile ? [0, 200] : [0, 600]);
   const moveSmallY = useTransform(localScrollY, [0, 1000], [0, 50]);
   const moveBottom = useTransform(localScrollY, [0, 500], isMobile ? [0, 230] : [0, 530]);

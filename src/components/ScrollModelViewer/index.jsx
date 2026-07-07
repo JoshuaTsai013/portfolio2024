@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useMotionValueEvent } from 'motion/react';
 import { useScrollValue } from '../../contexts/ScrollContext';
 import '@google/model-viewer';
@@ -27,7 +27,7 @@ const ScrollModelViewer = ({ rotationSpeed, modelSrc}) => {
             // console.log('Setting cameraOrbit to:', newOrbit);
             modelRef.current.cameraOrbit = newOrbit;
         }
-    }, [currentScrollY]);
+    }, [currentScrollY, rotationSpeed]);
 
     return (
         // <div className={styles.container} data-scroll-section>

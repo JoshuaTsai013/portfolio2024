@@ -15,6 +15,6 @@ function Model() {
             </motion.div>
         </div>
     );
-};
+}
 
 export default Model;

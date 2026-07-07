@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import useWindowDimensions from "../Hooks/useWindowDimensions";
-import { motion, useTransform, useTime, useSpring } from "motion/react";
+import { motion, useTransform, useTime } from "motion/react";
 import styles from './parallaxFooter.module.css';
 import { useScrollValue } from '../../contexts/ScrollContext';
 

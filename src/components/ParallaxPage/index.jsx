@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import useWindowDimensions from "../Hooks/useWindowDimensions";
-import { motion, useMotionValueEvent, useTransform, useTime } from "motion/react";
+import { motion, useTransform } from "motion/react";
 import { useScrollValue } from '../../contexts/ScrollContext';
 // import styles from './ParallaxPage.module.css';
 
@@ -48,25 +48,7 @@ function ParallaxPage() {
   //   console.log("localScrollY", value);
   // });
 
-  // Add a continuous floating animation for the sun using sine wave
-  const time = useTime();
-  const sunFloat = useTransform(time, (t) => {
-    return Math.sin(t / 800) * (isMobile ? 10 : 15); // Float up/down by 10-15px
-  });
-
-  // Create pulsing opacity for gridLine that syncs with sun animation
-  const gridOpacity = useTransform(time, (t) => {
-    const sineValue = (Math.sin(t / 300) + 1) / 2; // 0 to 1
-    return 0.6 + (sineValue * 0.4); // Map to 0.6 to 1 range
-  });
-
-  const sunMoveY = useTransform(localScrollY, [0, 0.2], isMobile ? [0, (sectionHeight * 0.34)] : [0, (sectionHeight * 0.55)]);
-  const sunScale = useTransform(localScrollY, [0, 0.9], isMobile ? [0.5, 1] : [0.1, 1]);
   const moveBrandY = useTransform(localScrollY, [0.5, 0.9],isMobile ? [0, (sectionHeight * 0.2)] : [0, (sectionHeight * 0.4)]);
-  const moveSocialY = useTransform(localScrollY, [0, 0.3],isMobile ? [0, (sectionHeight * 0.3)] :[0, (sectionHeight * 0.4)]);
-  const moveBottom = useTransform(localScrollY, [0, 0.9],isMobile ? [0, (sectionHeight * 0.2)] : [0, (sectionHeight * 0.44)]);
-  const scaleBottomY = useTransform(localScrollY, [0.2, 0.8], isMobile ? [2.4, 1] : [2.2, 1]);
-  const scaleBottomX = useTransform(localScrollY, [0.2, 0.8], isMobile ? [1, 1] : [1.5, 1.1]);
 
     return (
     <div

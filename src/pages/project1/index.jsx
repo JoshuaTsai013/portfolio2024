@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'motion/react';
 import styles from './project.module.css';
 import ProjectHeader from '../../components/ProjectHeader';

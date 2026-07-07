@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import styles from './Headerstyle.module.css';
@@ -60,7 +60,7 @@ function Header({ isVisible = true }) {
     >
       {/* Logo or Brand Name could go here */}
       <div className="text-white font-bold text-xl z-50">
-        <h2>I'm Joshua</h2>
+        <h2>I&apos;m Joshua</h2>
         {/* Placeholder for Logo if needed, or just keep empty for now as per original */}
       </div>
 
