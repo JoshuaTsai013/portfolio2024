@@ -52,7 +52,10 @@ always apply; this file adds the how.
 
 ## 4. Git & delivery
 
-- Work on `Develop`. `main` receives merges/PRs. Never commit or push unprompted (Rule N6).
+- Never edit or commit directly on `Develop`/`main` (Rule N7). Start each file-modifying
+  task on its own branch cut from `Develop`: `git switch -c claude/<short-topic>` (skip if
+  already on a `claude/*` branch). `Develop` collects these branches by merge; `main`
+  receives PRs/releases. Never commit, merge, or push unprompted (Rule N6).
 - Commit message: single lowercase imperative line, optionally `tweak:`/`fix:` prefixed,
   matching existing history (`git log --oneline -10` before writing one).
 - Deliver every task with the DONE checklist from

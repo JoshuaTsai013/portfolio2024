@@ -21,6 +21,7 @@ Package manager: **yarn** (v1, yarn.lock committed). No test framework, no CI.
 - **N4** Visual/animation results CANNOT be verified by you. After any visual change, your final message must contain the line: `UNVERIFIED VISUALLY — please check <route> in the browser.`
 - **N5** Before rewriting an existing harness file (this file, `.claude/rules/*`, `.claude/settings.json`), copy it to `<name>.bak` first. Exception: appending entries to `60-lessons.md` needs no backup. A `.bak` does not by itself authorize the edit — the tier rules in [50-knowledge-iteration.md](.claude/rules/50-knowledge-iteration.md) decide whether you may edit at all.
 - **N6** Commit only when the user asks. Working branch is `Develop`; `main` is for PRs/releases. Commit style: short lowercase imperative (e.g. `add guitar love page and motion grid component`).
+- **N7** Session-branch isolation: never edit files or commit while on `Develop` or `main`. At the start of any task that will modify files, if on `Develop`/`main`, run `git switch -c claude/<short-topic>` off `Develop` first (skip if already on a `claude/*` branch). `Develop`/`main` stay untouched until the user merges (Rule N6).
 
 ## Routing table — read the file BEFORE doing the task type
 
