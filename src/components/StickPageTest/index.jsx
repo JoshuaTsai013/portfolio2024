@@ -1,21 +1,19 @@
 import { useRef, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import useWindowDimensions from "../Hooks/useWindowDimensions";
-import { motion, useMotionValueEvent, useTransform, useSpring } from "motion/react";
-import TypewriterText from "../TypewriterText";
+import { motion, useMotionValueEvent, useTransform } from "motion/react";
 import ScrollTypewriterText from "../ScrollTypewriterText";
 import { useScrollValue } from '../../contexts/ScrollContext';
 
 function StickPageTest() {
   const scrollY = useScrollValue();
 
-  const { height, width } = useWindowDimensions();
-  const isMobile = width < 768;
+  const { height } = useWindowDimensions();
   const sectionRef = useRef(null);
   const [sectionOffset, setSectionOffset] = useState(0);
   const [sectionHeight, setSectionHeight] = useState(1);
-  const [text1Trigger, setText1Trigger] = useState(false);
-  const [text2Trigger, setText2Trigger] = useState(false);
+  const [, setText1Trigger] = useState(false);
+  const [, setText2Trigger] = useState(false);
 
   // Get the actual position of the parallax section when component mounts
   useEffect(() => {

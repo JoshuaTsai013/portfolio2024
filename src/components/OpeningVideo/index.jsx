@@ -4,7 +4,7 @@ import styles from './OpeningVideo.module.css';
 
 function OpeningVideo({ onVideoSection }) {
     const videoRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [, setIsPlaying] = useState(false);
 
     useEffect(() => {
         const video = videoRef.current;

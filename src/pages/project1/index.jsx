@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'motion/react';
 import styles from './project.module.css';
 import ProjectHeader from '../../components/ProjectHeader';
@@ -15,7 +14,7 @@ function Project1() {
                 transition={{ duration: 1 }}
             >
                 <div className={styles.heroImage}>
-                    <img src="/project1_cover.png" alt="TechVision AI Platform" />
+                    <img src="/project1_cover.webp" alt="TechVision AI Platform" />
                     <div className={styles.heroOverlay}></div>
                 </div>
                 <div className={styles.heroContent}>

@@ -4,6 +4,8 @@
   position: absolute;
   left: 1rem;
   top: 5%;
+  /* Own compositing layer: gradient-clipped text trails when moved without one */
+  will-change: transform;
 }
 
 .socialContainer {
@@ -11,6 +13,7 @@
   right: 1rem;
   top: 5%;
   text-align: right;
+  will-change: transform;
 }
 
 .container {

@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useMotionValueEvent } from "motion/react";
 
 function ScrollTypewriterText({ text = "", className, progress }) {
   const [displayText, setDisplayText] = useState("");
 
-  const updateText = (value) => {
+  const updateText = useCallback((value) => {
     const clamped = Math.min(1, Math.max(0, value));
     const charIndex = Math.floor(clamped * text.length);
     const safeIndex = Math.min(charIndex, text.length);
@@ -12,7 +12,7 @@ function ScrollTypewriterText({ text = "", className, progress }) {
     const visiblePart = text.substring(0, safeIndex);
     const hiddenPart = text.substring(safeIndex).split('').map(char => char === ' ' ? ' ' : 'x').join('');
     setDisplayText(visiblePart + hiddenPart);
-  };
+  }, [text]);
 
   useMotionValueEvent(progress, "change", (latest) => {
     requestAnimationFrame(() => { updateText(latest); });
@@ -24,7 +24,7 @@ function ScrollTypewriterText({ text = "", className, progress }) {
     } else {
       updateText(0);
     }
-  }, [text, progress]);
+  }, [text, progress, updateText]);
 
   return (
     <h1 className={className} style={{ fontFamily: 'monospace', letterSpacing: '0.05em' }}>

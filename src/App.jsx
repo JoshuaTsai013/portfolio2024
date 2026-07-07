@@ -1,7 +1,7 @@
 import './App.css'
 import { useState } from 'react';
 import { useMotionValue } from "motion/react";
-import { AnimatePresence } from 'motion/react';
+import { AnimatePresence, MotionConfig } from 'motion/react';
 import SmoothScroll from "./components/SmoothScroll";
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/home';
@@ -27,7 +27,7 @@ function App() {
   };
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <AnimatePresence mode="wait">
         {isLoading && (
           <LoadingScreen key="loading" onComplete={handleLoadingComplete} />
@@ -49,7 +49,7 @@ function App() {
           </ScrollProvider>
         </SmoothScroll>
       )}
-    </>
+    </MotionConfig>
   )
 }
 

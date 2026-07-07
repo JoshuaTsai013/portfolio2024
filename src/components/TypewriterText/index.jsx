@@ -15,7 +15,7 @@ function TypewriterText({ text, className, trigger = false, speed = 50 }) {
     // Start typing animation when triggered
     if (currentIndex < text.length) {
       const timer = setTimeout(() => {
-        setDisplayText(prev => {
+        setDisplayText(() => {
           const chars = text.split('');
           const display = chars.map((char, i) => {
             if (i <= currentIndex) {

@@ -17,7 +17,6 @@ function Parallex() {
   const localScrollY = useTransform(scrollY, (value) => Math.max(0, value - sectionOffset));
 
   // Now use localScrollY for all transforms - values work as if this section is at the top
-  const scaleY = useTransform(localScrollY, [0, 1000], isMobile ? [1, 1.7] : [1, 1.5]);
   const moveY = useTransform(localScrollY, [0, 900], isMobile ? [0, 200] : [0, 600]);
   const moveSmallY = useTransform(localScrollY, [0, 1000], [0, 50]);
   const moveBottom = useTransform(localScrollY, [0, 500], isMobile ? [0, 230] : [0, 530]);
@@ -34,37 +33,37 @@ function Parallex() {
         <motion.img
           style={{ transformOrigin: "top" ,height: `${height + 400}px` }}
           className="h-screen absolute m-auto left-0 right-0 Top-0"
-          src="ParallexImages/backgroundUpLineSize.png"
+          src="ParallexImages/backgroundUpLineSize.webp"
           alt="backgroundUpLineSize"
         />
         <motion.img
           style={{ y: moveY }}
           className="h-1/3 absolute m-auto left-0 right-0 bottom-24 "
-          src="ParallexImages/sunSize.png"
+          src="ParallexImages/sunSize.webp"
           alt="sunSize"
         />
         <motion.img
           style={{ y: moveSmallY }}
           className="h-12 md:h-20 absolute m-auto left-20 bottom-24"
-          src="ParallexImages/welcome2.png"
+          src="ParallexImages/welcome2.webp"
           alt="welcome2"
         />
         <motion.img
           style={{ y: moveSmallY }}
           className="h-12 md:h-20 absolute m-auto right-20 bottom-48"
-          src="ParallexImages/welcome2.png"
+          src="ParallexImages/welcome2.webp"
           alt="welcome2"
         />
         <motion.img
           style={{ y: moveBottom, scaleY: scaleBottom, transformOrigin: "bottom" }}
           className="h-1/2 absolute m-auto left-0 right-0 -bottom-2"
-          src="ParallexImages/backgroundDownSize.png"
+          src="ParallexImages/backgroundDownSize.webp"
           alt="backgroundDownSize"
         />
         <motion.img
           style={{ y: moveBottom, scaleY: scaleBottom, transformOrigin: "bottom" }}
           className="h-1/2 absolute m-auto left-0 right-0 -bottom-2"
-          src="ParallexImages/gridLineSize.png"
+          src="ParallexImages/gridLineSize.webp"
           alt="gridLineSize"
         />
       </motion.div>

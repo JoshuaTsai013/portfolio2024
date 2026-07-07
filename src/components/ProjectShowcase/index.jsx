@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './ProjectShowcase.module.css';
@@ -12,22 +12,22 @@ const PROJECTS = [
         id: 1,
         title: 'skyfall',
         description: 'This is a description for Project 1',
-        image: '/ProjectCover1.png',
+        image: '/ProjectCover1.webp',
         path: '/project/skyfall',
     },
     {
         id: 2,
         title: 'wander',
         description: 'This is a description for Project 2',
-        image: '/ProjectCover3.png',
+        image: '/ProjectCover3.webp',
         path: '/project/wander',
     },
     {
         id: 3,
-        title: 'Project3',
-        description: 'This is a description for Project 3',
-        image: '/ProjectCover3.png',
-        path: '/project/3',
+        title: 'guitar love',
+        description: 'This is a description for Guitar Love',
+        image: '/ProjectCover2.webp',
+        path: '/project/guitar-love',
     },
 ];
 
@@ -72,10 +72,16 @@ function makeExpandProps(rect) {
 
 function ProjectShowcase() {
     const navigate = useNavigate();
+    const shouldReduceMotion = useReducedMotion();
     const [expandingProject, setExpandingProject] = useState(null);
 
     const handleProjectClick = (e, project) => {
         e.preventDefault();
+        // Reduced motion: skip the expand overlay and its delay, switch pages instantly
+        if (shouldReduceMotion) {
+            navigate(project.path);
+            return;
+        }
         const rect = e.currentTarget.getBoundingClientRect();
         setExpandingProject({ rect, image: project.image });
         setTimeout(() => navigate(project.path), EXPAND_DURATION * 1000);
