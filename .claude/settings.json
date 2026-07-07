@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn lint)",
+      "Bash(yarn build)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "PowerShell(yarn lint)",
+      "PowerShell(yarn build)",
+      "PowerShell(git status)",
+      "PowerShell(git diff:*)",
+      "PowerShell(git log:*)",
+      "PowerShell(git show:*)",
+      "PowerShell(git branch:*)"
+    ],
+    "deny": [
+      "Bash(yarn dev)",
+      "Bash(yarn dev:*)",
+      "Bash(yarn preview)",
+      "Bash(yarn preview:*)",
+      "Bash(yarn run dev:*)",
+      "Bash(yarn run preview:*)",
+      "Bash(vite:*)",
+      "Bash(npx vite:*)",
+      "PowerShell(yarn dev)",
+      "PowerShell(yarn dev:*)",
+      "PowerShell(yarn preview)",
+      "PowerShell(yarn preview:*)",
+      "PowerShell(yarn run dev:*)",
+      "PowerShell(yarn run preview:*)",
+      "PowerShell(vite:*)",
+      "PowerShell(npx vite:*)"
+    ]
+  }
+}
